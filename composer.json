@@ -1,5 +1,5 @@
 {
-    "name": "juliushaertl/phpdoc-to-rst",
+    "name": "qury/phpdoc-to-rst",
     "description": "Generate Sphinx/ReStructured documentation from PHPDoc",
     "type": "library",
     "require": {
@@ -15,6 +15,10 @@
         {
             "name": "Julius Härtl",
             "email": "jus@bitgrid.net"
+        },
+           {
+            "name": "Ferenc Kurucz",
+            "email": "ferenc.kurucz.6351@gmail.com"
         }
     ],
     "minimum-stability": "dev",
