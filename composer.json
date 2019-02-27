@@ -3,8 +3,8 @@
     "description": "Generate Sphinx/ReStructured documentation from PHPDoc",
     "type": "library",
     "require": {
-        "phpdocumentor/reflection": "dev-develop",
-        "phpdocumentor/reflection-common": "1.0.1",
+        "phpdocumentor/reflection": "~4.0",
+        "phpdocumentor/reflection-common": "2.0.0-beta1",
         "symfony/console": "^4.0"
     },
     "require-dev": {
