@@ -432,7 +432,7 @@ Methods
 	.. php:method:: private processMethodArgumentType( $argument, $args)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#527 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L527>`_
+			`/Builder/PhpDomainBuilder.php#528 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L528>`_
 		
 		
 		:Parameters:

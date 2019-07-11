@@ -22,6 +22,7 @@ namespace JuliusHaertl\PHPDocToRst\Middleware;
 
 use Exception;
 use JuliusHaertl\PHPDocToRst\ApiDocBuilder;
+use phpDocumentor\Reflection\Middleware\Command;
 use phpDocumentor\Reflection\Middleware\Middleware;
 use phpDocumentor\Reflection\Php\Factory\File\CreateCommand;
 
@@ -42,12 +43,12 @@ final class ErrorHandlingMiddleware implements Middleware
     /**
      * Executes this middleware class.
      *
-     * @param CreateCommand $command
-     * @param callable      $next
+     * @param Command $command
+     * @param callable                                     $next
      *
      * @return object
      */
-    public function execute($command, callable $next)
+    public function execute(Command $command, callable $next)
     {
         $filename = $command->getFile()->path();
         $this->apiDocBuilder->debug('Starting to parse file: '.$filename);
