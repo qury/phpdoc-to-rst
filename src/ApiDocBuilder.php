@@ -194,71 +194,20 @@ final class ApiDocBuilder
         foreach ($this->extensions as $extension) {
             $extension->prepare();
         }
+
         $this->log('Start building files');
+
         foreach ($this->project->getFiles() as $file) {
             /*
              * Go though interfaces/classes/functions of files and build documentation
              */
-            foreach ($file->getInterfaces() as $interface) {
-                $fqsen = $interface->getFqsen();
-                $builder = new InterfaceFileBuilder($file, $interface, $this->extensions);
-                $filename = $this->dstDir.str_replace('\\', '/', $fqsen).'.rst';
-                file_put_contents($filename, $builder->getContent());
-                $this->docFiles[(string) $interface->getFqsen()] = str_replace('\\', '/', $fqsen);
 
-                // also build root namespace in indexes
-                if (strpos((string) substr($fqsen, 1), '\\') === false) {
-                    $this->project->getRootNamespace()->addInterface($fqsen);
-                }
-                $this->debug('Written interface documentation to '.$filename);
-            }
+            $this->parseInterfaces($file);
+            $this->parseClasses($file);
+            $this->parseTraits($file);
+            $this->parseFunctions($file);
+            $this->parseConstants($file);
 
-            foreach ($file->getClasses() as $class) {
-                $fqsen = $class->getFqsen();
-                $builder = new ClassFileBuilder($file, $class, $this->extensions);
-                $filename = $this->dstDir.str_replace('\\', '/', $fqsen).'.rst';
-                file_put_contents($filename, $builder->getContent());
-                $this->docFiles[(string) $class->getFqsen()] = str_replace('\\', '/', $fqsen);
-
-                // also build root namespace in indexes
-                if (strpos((string) substr($class->getFqsen(), 1), '\\') === false) {
-                    $this->project->getRootNamespace()->addClass($fqsen);
-                }
-                $this->debug('Written class documentation to '.$filename);
-            }
-
-            foreach ($file->getTraits() as $trait) {
-                $fqsen = $trait->getFqsen();
-                $builder = new TraitFileBuilder($file, $trait, $this->extensions);
-                $filename = $this->dstDir.str_replace('\\', '/', $fqsen).'.rst';
-                file_put_contents($filename, $builder->getContent());
-                $this->docFiles[(string) $trait->getFqsen()] = str_replace('\\', '/', $fqsen);
-
-                // also build root namespace in indexes
-                if (strpos((string) substr($fqsen, 1), '\\') === false) {
-                    $this->project->getRootNamespace()->addTrait($fqsen);
-                }
-                $this->debug('Written trait documentation to '.$filename);
-            }
-
-            // build array of functions per namespace
-            foreach ($file->getFunctions() as $function) {
-                $namespace = substr(PhpDomainBuilder::getNamespace($function), 0, -2);
-                $namespace = $namespace === '' ? '\\' : $namespace;
-                if (!array_key_exists($namespace, $this->functions)) {
-                    $this->functions[$namespace] = [];
-                }
-                $this->functions[$namespace][] = $function;
-            }
-            // build array of constants per namespace
-            foreach ($file->getConstants() as $constant) {
-                $namespace = PhpDomainBuilder::getNamespace($constant);
-                $namespace = $namespace === '' ? '\\' : $namespace;
-                if (!array_key_exists($namespace, $this->constants)) {
-                    $this->constants[$namespace] = [];
-                }
-                $this->constants[$namespace][] = $constant;
-            }
         }
     }
 
@@ -336,5 +285,97 @@ final class ApiDocBuilder
     {
         $this->extensionNames[] = $class;
         $this->extensionArguments[$class] = $arguments;
+    }
+
+    /**
+     * @param \phpDocumentor\Reflection\Php\File $file
+     */
+    private function parseInterfaces(\phpDocumentor\Reflection\Php\File $file): void
+    {
+        foreach ($file->getInterfaces() as $interface) {
+            $fqsen = $interface->getFqsen();
+            $builder = new InterfaceFileBuilder($file, $interface, $this->extensions);
+            $filename = $this->dstDir.str_replace('\\', '/', $fqsen).'.rst';
+            file_put_contents($filename, $builder->getContent());
+            $this->docFiles[(string) $interface->getFqsen()] = str_replace('\\', '/', $fqsen);
+
+            // also build root namespace in indexes
+            if (strpos((string) substr($fqsen, 1), '\\') === false) {
+                $this->project->getRootNamespace()->addInterface($fqsen);
+            }
+            $this->debug('Written interface documentation to '.$filename);
+        }
+    }
+
+    /**
+     * @param \phpDocumentor\Reflection\Php\File $file
+     */
+    private function parseClasses(\phpDocumentor\Reflection\Php\File $file): void
+    {
+        foreach ($file->getClasses() as $class) {
+            $fqsen = $class->getFqsen();
+            $builder = new ClassFileBuilder($file, $class, $this->extensions);
+            $filename = $this->dstDir.str_replace('\\', '/', $fqsen).'.rst';
+            file_put_contents($filename, $builder->getContent());
+            $this->docFiles[(string) $class->getFqsen()] = str_replace('\\', '/', $fqsen);
+
+            // also build root namespace in indexes
+            if (strpos((string) substr($class->getFqsen(), 1), '\\') === false) {
+                $this->project->getRootNamespace()->addClass($fqsen);
+            }
+            $this->debug('Written class documentation to '.$filename);
+        }
+    }
+
+    /**
+     * @param \phpDocumentor\Reflection\Php\File $file
+     */
+    private function parseTraits(\phpDocumentor\Reflection\Php\File $file): void
+    {
+        foreach ($file->getTraits() as $trait) {
+            $fqsen = $trait->getFqsen();
+            $builder = new TraitFileBuilder($file, $trait, $this->extensions);
+            $filename = $this->dstDir.str_replace('\\', '/', $fqsen).'.rst';
+            file_put_contents($filename, $builder->getContent());
+            $this->docFiles[(string) $trait->getFqsen()] = str_replace('\\', '/', $fqsen);
+
+            // also build root namespace in indexes
+            if (strpos((string) substr($fqsen, 1), '\\') === false) {
+                $this->project->getRootNamespace()->addTrait($fqsen);
+            }
+            $this->debug('Written trait documentation to '.$filename);
+        }
+    }
+
+    /**
+     * @param \phpDocumentor\Reflection\Php\File $file
+     */
+    private function parseFunctions(\phpDocumentor\Reflection\Php\File $file) :void
+    {
+        // build array of functions per namespace
+        foreach ($file->getFunctions() as $function) {
+            $namespace = substr(PhpDomainBuilder::getNamespace($function), 0, -2);
+            $namespace = $namespace === '' ? '\\' : $namespace;
+            if (!array_key_exists($namespace, $this->functions)) {
+                $this->functions[$namespace] = [];
+            }
+            $this->functions[$namespace][] = $function;
+        }
+    }
+
+    /**
+     * @param \phpDocumentor\Reflection\Php\File $file
+     */
+    private function parseConstants(\phpDocumentor\Reflection\Php\File $file): void
+    {
+        // build array of constants per namespace
+        foreach ($file->getConstants() as $constant) {
+            $namespace = PhpDomainBuilder::getNamespace($constant);
+            $namespace = $namespace === '' ? '\\' : $namespace;
+            if (!array_key_exists($namespace, $this->constants)) {
+                $this->constants[$namespace] = [];
+            }
+            $this->constants[$namespace][] = $constant;
+        }
     }
 }
