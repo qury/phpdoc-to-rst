@@ -24,7 +24,7 @@ An example for the documentation output can be found in our [own documentation](
 
 Install phpdoc-to-rst to your project directory: 
     
-    composer require --dev juliushaertl/phpdoc-to-rst
+    composer require --dev abbadon1334/phpdoc-to-rst
     
 Run the command line tool to parse the folders containing your PHP tree and render the reStructuredText files to the output directory:
 
