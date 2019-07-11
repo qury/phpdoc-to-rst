@@ -236,3 +236,66 @@ Methods
 	
 	
 
+.. rst-class:: private
+
+	.. php:method:: private parseInterfaces( $file)
+	
+		
+		:Parameters:
+			* **$file** (:any:`phpDocumentor\\Reflection\\Php\\File <phpDocumentor\\Reflection\\Php\\File>`)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private parseClasses( $file)
+	
+		
+		:Parameters:
+			* **$file** (:any:`phpDocumentor\\Reflection\\Php\\File <phpDocumentor\\Reflection\\Php\\File>`)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private parseTraits( $file)
+	
+		
+		:Parameters:
+			* **$file** (:any:`phpDocumentor\\Reflection\\Php\\File <phpDocumentor\\Reflection\\Php\\File>`)  
+
+		
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private parseFunctions( $file)
+	
+		
+		:Parameters:
+			* **$file** (:any:`phpDocumentor\\Reflection\\Php\\File <phpDocumentor\\Reflection\\Php\\File>`)  
+
+		
+		:Returns: bool | string 
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private parseConstants( $file)
+	
+		
+		:Parameters:
+			* **$file** (:any:`phpDocumentor\\Reflection\\Php\\File <phpDocumentor\\Reflection\\Php\\File>`)  
+
+		
+	
+	
+
