@@ -5,10 +5,26 @@ if (!ini_get('date.timezone')) {
     ini_set('date.timezone', 'UTC');
 }
 
-foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
-    if (file_exists($file)) {
-        define('PHPUNIT_COMPOSER_INSTALL', $file);
-        break;
+foreach([null,'vendor'] as $vendor_dir)
+{
+    $dir = [__DIR__];
+    for($a=0;$a=3;$a++)
+    {
+        $dir[]= '..';
+        $file = implode(DIRECTORY_SEPARATOR, $dir);
+        if($vendor_dir)
+        {
+            $file.= DIRECTORY_SEPARATOR . 'vendor';
+        }
+
+        $file.= DIRECTORY_SEPARATOR . 'autoload.php';
+
+        echo $file;
+
+        if (file_exists($file)) {
+            define('PHPUNIT_COMPOSER_INSTALL', $file);
+            break;
+        }
     }
 }
 
