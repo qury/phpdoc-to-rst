@@ -19,33 +19,17 @@ PublicOnlyExtension
 		| Do only render public methods/properties
 		
 	
-	:Source:
-		`src/Extension/PublicOnlyExtension.php#38 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Extension/PublicOnlyExtension.php#L38>`_
-	
 	:Parent:
 		:php:class:`JuliusHaertl\\PHPDocToRst\\Extension\\Extension`
 	
-
-
-Summary
--------
-
-Methods
-~~~~~~~
-
-* :php:meth:`public shouldRenderElement\($element\)<JuliusHaertl\\PHPDocToRst\\Extension\\PublicOnlyExtension::shouldRenderElement\(\)>`
-
 
 Methods
 -------
 
 .. rst-class:: public
 
-	.. php:method:: public shouldRenderElement(phpDocumentor\\Reflection\\Element $element)
+	.. php:method:: public shouldRenderElement( $element)
 	
-		:Source:
-			`src/Extension/PublicOnlyExtension.php#40 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Extension/PublicOnlyExtension.php#L40>`_
-		
 		
 	
 	

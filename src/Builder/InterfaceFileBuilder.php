@@ -1,10 +1,8 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
- *
- * @author Julius Härtl <jus@bitgrid.net>
- *
- * @license GNU AGPL version 3 or any later version
+ * @author    Julius Härtl <jus@bitgrid.net>
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -18,18 +16,16 @@
  *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
 namespace JuliusHaertl\PHPDocToRst\Builder;
 
-use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\Php\Interface_;
 
-
-class InterfaceFileBuilder extends FileBuilder {
-
-    protected function render() {
+class InterfaceFileBuilder extends FileBuilder
+{
+    protected function render()
+    {
         /** @var Interface_ $interface */
         $interface = $this->element;
 
@@ -48,5 +44,4 @@ class InterfaceFileBuilder extends FileBuilder {
         $this->addConstants($interface->getConstants());
         $this->addMethods($interface->getMethods());
     }
-
 }

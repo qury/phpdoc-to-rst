@@ -13,22 +13,9 @@ InterfaceFileBuilder
 .. php:class:: InterfaceFileBuilder
 
 
-	:Source:
-		`src/Builder/InterfaceFileBuilder.php#30 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/InterfaceFileBuilder.php#L30>`_
-	
 	:Parent:
 		:php:class:`JuliusHaertl\\PHPDocToRst\\Builder\\FileBuilder`
 	
-
-
-Summary
--------
-
-Methods
-~~~~~~~
-
-* :php:meth:`protected render\(\)<JuliusHaertl\\PHPDocToRst\\Builder\\InterfaceFileBuilder::render\(\)>`
-
 
 Methods
 -------
@@ -37,9 +24,6 @@ Methods
 
 	.. php:method:: protected render()
 	
-		:Source:
-			`src/Builder/InterfaceFileBuilder.php#32 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/InterfaceFileBuilder.php#L32>`_
-		
 		
 	
 	

@@ -1,7 +1,17 @@
 # phpdoc-to-rst
 
-[![Documentation Status](https://readthedocs.org/projects/phpdoc-to-rst/badge/?version=latest)](http://phpdoc-to-rst.readthedocs.io/en/latest/?badge=latest) [![Build Status](https://scrutinizer-ci.com/g/juliushaertl/phpdoc-to-rst/badges/build.png?b=master)](https://scrutinizer-ci.com/g/juliushaertl/phpdoc-to-rst/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/juliushaertl/phpdoc-to-rst/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/juliushaertl/phpdoc-to-rst/?branch=master) 
+[![Build Status](https://travis-ci.org/abbadon1334/phpdoc-to-rst.svg?branch=master)](https://travis-ci.org/abbadon1334/phpdoc-to-rst)
+[![Coverage Status](https://coveralls.io/repos/github/abbadon1334/phpdoc-to-rst/badge.svg?branch=master)](https://coveralls.io/github/abbadon1334/phpdoc-to-rst?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4b4264eb36ca49ed81d29f5102a64a39)](https://www.codacy.com/app/abbadon1334/phpdoc-to-rst?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=abbadon1334/phpdoc-to-rst&amp;utm_campaign=Badge_Grade)
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/badges/build.png?b=master)](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
+Forked and refactor by Francesco "Abbadon1334" Danti.
+
+Now working as intended, with good coverage. 
 
 Generate reStructuredText for Sphinx based documentation from PHPDoc annotations. 
 

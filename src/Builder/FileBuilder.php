@@ -1,10 +1,8 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
- *
- * @author Julius Härtl <jus@bitgrid.net>
- *
- * @license GNU AGPL version 3 or any later version
+ * @author    Julius Härtl <jus@bitgrid.net>
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -18,7 +16,6 @@
  *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
 namespace JuliusHaertl\PHPDocToRst\Builder;
@@ -28,12 +25,10 @@ use phpDocumentor\Reflection\Element;
 use phpDocumentor\Reflection\Php\File;
 
 /**
- * Abstract building class to build sphinxcontrib-phpdomain from a php file
- *
- * @package JuliusHaertl\PHPDocToRst\Builder
+ * Abstract building class to build sphinxcontrib-phpdomain from a php file.
  */
-abstract class FileBuilder extends PhpDomainBuilder {
-
+abstract class FileBuilder extends PhpDomainBuilder
+{
     /** @var File */
     protected $file;
 
@@ -43,27 +38,29 @@ abstract class FileBuilder extends PhpDomainBuilder {
     /** @var Extension[] */
     protected $extensions = [];
 
-    protected abstract function render();
-
-    public function __construct($file, $element, $extensions) {
+    public function __construct($file, $element, $extensions)
+    {
         parent::__construct($extensions);
         $this->file = $file;
         $this->element = $element;
         $this->render();
     }
 
+    abstract protected function render();
+
     /**
      * @return Element that is used to build the rst file
      */
-    public function getElement() {
+    public function getElement()
+    {
         return $this->element;
     }
 
     /**
      * @return File
      */
-    public function getFile() {
+    public function getFile()
+    {
         return $this->file;
     }
-
 }

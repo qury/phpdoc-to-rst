@@ -18,9 +18,6 @@ PhpDomainBuilder
 		| Class to build reStructuredText file with sphinxcontrib\-phpdomain syntax
 		
 	
-	:Source:
-		`src/Builder/PhpDomainBuilder.php#49 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L49>`_
-	
 	:Parent:
 		:php:class:`JuliusHaertl\\PHPDocToRst\\Builder\\RstBuilder`
 	
@@ -28,64 +25,23 @@ PhpDomainBuilder
 		:php:trait:`JuliusHaertl\\PHPDocToRst\\Builder\\ExtensionBuilder` 
 	
 
-
-Summary
--------
-
-Methods
-~~~~~~~
-
-* :php:meth:`public \_\_construct\($extensions\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::\_\_construct\(\)>`
-* :php:meth:`public static getNamespace\($element\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::getNamespace\(\)>`
-* :php:meth:`protected addPageHeader\($element\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addPageHeader\(\)>`
-* :php:meth:`private getTypeForClass\($element\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::getTypeForClass\(\)>`
-* :php:meth:`protected addAfterIntroduction\($element\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addAfterIntroduction\(\)>`
-* :php:meth:`protected addConstants\($constants\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addConstants\(\)>`
-* :php:meth:`private addConstant\($constant\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addConstant\(\)>`
-* :php:meth:`protected addProperties\($properties\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addProperties\(\)>`
-* :php:meth:`private addProperty\($property\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addProperty\(\)>`
-* :php:meth:`protected addParent\($element\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addParent\(\)>`
-* :php:meth:`protected addUsedTraits\($element\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addUsedTraits\(\)>`
-* :php:meth:`protected addMethods\($methods\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addMethods\(\)>`
-* :php:meth:`private addMethod\($method\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addMethod\(\)>`
-* :php:meth:`public static getLink\($type, $fqsen, $description\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::getLink\(\)>`
-* :php:meth:`public beginPhpDomain\($type, $name, $indent\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::beginPhpDomain\(\)>`
-* :php:meth:`public endPhpDomain\($type\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::endPhpDomain\(\)>`
-* :php:meth:`public addDocBlockDescription\($element\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addDocBlockDescription\(\)>`
-* :php:meth:`protected addDocblockTag\($tagName, $docBlock\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::addDocblockTag\(\)>`
-* :php:meth:`public static typesToRst\($typesString\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::typesToRst\(\)>`
-* :php:meth:`public shouldRenderElement\($element\)<JuliusHaertl\\PHPDocToRst\\Builder\\PhpDomainBuilder::shouldRenderElement\(\)>`
-
-
 Constants
 ---------
 
 .. php:const:: SECTION_BEFORE_DESCRIPTION = self::class \. ::SECTION\_BEFORE\_DESCRIPTION
 
-	:Source:
-		`src/Builder/PhpDomainBuilder.php#51 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L51>`_
-	
 
 
 .. php:const:: SECTION_AFTER_DESCRIPTION = self::class \. ::SECTION\_AFTER\_DESCRIPTION
 
-	:Source:
-		`src/Builder/PhpDomainBuilder.php#52 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L52>`_
-	
 
 
 .. php:const:: SECTION_AFTER_TITLE = self::class \. ::SECTION\_AFTER\_TITLE
 
-	:Source:
-		`src/Builder/PhpDomainBuilder.php#53 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L53>`_
-	
 
 
 .. php:const:: SECTION_AFTER_INTRODUCTION = self::class \. ::SECTION\_AFTER\_INTRODUCTION
 
-	:Source:
-		`src/Builder/PhpDomainBuilder.php#54 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L54>`_
-	
 
 
 Methods
@@ -95,24 +51,35 @@ Methods
 
 	.. php:method:: public __construct( $extensions)
 	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#60 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L60>`_
 		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected addPageHeader( $element)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add namespace
+			
+		
+		
+		:Parameters:
+			* **$element** (:any:`phpDocumentor\\Reflection\\Element <phpDocumentor\\Reflection\\Element>`)  
+
 		
 	
 	
 
 .. rst-class:: public static
 
-	.. php:method:: public static getNamespace(phpDocumentor\\Reflection\\Element $element)
+	.. php:method:: public static getNamespace( $element)
 	
 		.. rst-class:: phpdoc-description
 		
 			| Strip element name from Fqsen to return the namespace only
 			
-		
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#72 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L72>`_
 		
 		
 		:Parameters:
@@ -123,132 +90,10 @@ Methods
 	
 	
 
-.. rst-class:: protected
-
-	.. php:method:: protected addPageHeader(phpDocumentor\\Reflection\\Element $element)
-	
-		.. rst-class:: phpdoc-description
-		
-			| Add namespace
-			
-		
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#81 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L81>`_
-		
-		
-		:Parameters:
-			* **$element** (:any:`phpDocumentor\\Reflection\\Element <phpDocumentor\\Reflection\\Element>`)  
-
-		
-	
-	
-
-.. rst-class:: protected
-
-	.. php:method:: protected addAfterIntroduction( $element)
-	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#118 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L118>`_
-		
-		
-	
-	
-
-.. rst-class:: protected
-
-	.. php:method:: protected addConstants( $constants)
-	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#123 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L123>`_
-		
-		
-	
-	
-
-.. rst-class:: protected
-
-	.. php:method:: protected addProperties( $properties)
-	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#152 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L152>`_
-		
-		
-		:Parameters:
-			* **$properties** (:any:`phpDocumentor\\Reflection\\Php\\Property\[\] <phpDocumentor\\Reflection\\Php\\Property>`)  
-
-		
-	
-	
-
-.. rst-class:: protected
-
-	.. php:method:: protected addParent( $element)
-	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#182 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L182>`_
-		
-		
-		:Parameters:
-			* **$element** (:any:`phpDocumentor\\Reflection\\Php\\Interface\_ <phpDocumentor\\Reflection\\Php\\Interface\_>` | :any:`\\phpDocumentor\\Reflection\\Php\\Class\_ <phpDocumentor\\Reflection\\Php\\Class\_>`)  
-
-		
-	
-	
-
-.. rst-class:: protected
-
-	.. php:method:: protected addUsedTraits( $element)
-	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#200 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L200>`_
-		
-		
-		:Parameters:
-			* **$element** (:any:`phpDocumentor\\Reflection\\Php\\Class\_ <phpDocumentor\\Reflection\\Php\\Class\_>` | :any:`\\phpDocumentor\\Reflection\\Php\\Trait\_ <phpDocumentor\\Reflection\\Php\\Trait\_>`)  
-
-		
-	
-	
-
-.. rst-class:: protected
-
-	.. php:method:: protected addMethods( $methods)
-	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#213 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L213>`_
-		
-		
-		:Parameters:
-			* **$methods**  
-
-		
-	
-	
-
-.. rst-class:: public static
-
-	.. php:method:: public static getLink( $type, $fqsen, $description="")
-	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#309 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L309>`_
-		
-		
-		:Parameters:
-			* **$type**  string
-			* **$fqsen**  string
-
-		
-		:Returns: string 
-	
-	
-
 .. rst-class:: public
 
 	.. php:method:: public beginPhpDomain( $type, $name, $indent=true)
 	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#321 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L321>`_
-		
 		
 		:Parameters:
 			* **$type**  string
@@ -259,19 +104,52 @@ Methods
 	
 	
 
+.. rst-class:: private
+
+	.. php:method:: private getTypeForClass( $element)
+	
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected addAfterIntroduction( $element)
+	
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected addConstants( $constants)
+	
+		
+	
+	
+
 .. rst-class:: public
 
-	.. php:method:: public endPhpDomain( $type="")
+	.. php:method:: public shouldRenderElement( $element)
 	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#333 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L333>`_
-		
 		
 		:Parameters:
-			* **$type** (string)  
+			* **$element** (:any:`phpDocumentor\\Reflection\\Element <phpDocumentor\\Reflection\\Element>`)  
 
 		
-		:Returns: $this 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private addConstant( $constant)
+	
+		
+		:Parameters:
+			* **$constant** (:any:`phpDocumentor\\Reflection\\Php\\Constant <phpDocumentor\\Reflection\\Php\\Constant>`)  
+
+		
 	
 	
 
@@ -279,9 +157,6 @@ Methods
 
 	.. php:method:: public addDocBlockDescription( $element)
 	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#342 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L342>`_
-		
 		
 		:Parameters:
 			* **$element** (:any:`phpDocumentor\\Reflection\\Php\\Class\_ <phpDocumentor\\Reflection\\Php\\Class\_>` | :any:`\\phpDocumentor\\Reflection\\Php\\Interface\_ <phpDocumentor\\Reflection\\Php\\Interface\_>` | :any:`\\phpDocumentor\\Reflection\\Php\\Trait\_ <phpDocumentor\\Reflection\\Php\\Trait\_>` | :any:`\\phpDocumentor\\Reflection\\Php\\Property <phpDocumentor\\Reflection\\Php\\Property>` | :any:`\\phpDocumentor\\Reflection\\Php\\Method <phpDocumentor\\Reflection\\Php\\Method>` | :any:`\\phpDocumentor\\Reflection\\Php\\Constant <phpDocumentor\\Reflection\\Php\\Constant>`)  
@@ -293,11 +168,8 @@ Methods
 
 .. rst-class:: protected
 
-	.. php:method:: protected addDocblockTag( $tagName, phpDocumentor\\Reflection\\DocBlock $docBlock)
+	.. php:method:: protected addDocblockTag( $tagName, $docBlock)
 	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#365 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L365>`_
-		
 		
 		:Parameters:
 			* **$tagName** (string)  Name of the tag to parse
@@ -311,9 +183,6 @@ Methods
 
 	.. php:method:: public static typesToRst( $typesString)
 	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#425 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L425>`_
-		
 		
 		:Parameters:
 			* **$typesString** (string)  
@@ -325,17 +194,137 @@ Methods
 
 .. rst-class:: public
 
-	.. php:method:: public shouldRenderElement(phpDocumentor\\Reflection\\Element $element)
+	.. php:method:: public endPhpDomain( $type="")
 	
-		:Source:
-			`src/Builder/PhpDomainBuilder.php#451 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Builder/PhpDomainBuilder.php#L451>`_
-		
 		
 		:Parameters:
-			* **$element** (:any:`phpDocumentor\\Reflection\\Element <phpDocumentor\\Reflection\\Element>`)  
+			* **$type** (string)  
 
 		
-		:Returns: bool 
+		:Returns: $this 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected addProperties( $properties)
+	
+		
+		:Parameters:
+			* **$properties** (:any:`phpDocumentor\\Reflection\\Php\\Property\[\] <phpDocumentor\\Reflection\\Php\\Property>`)  
+
+		
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private addProperty( $property)
+	
+		
+		:Parameters:
+			* **$property** (:any:`phpDocumentor\\Reflection\\Php\\Property <phpDocumentor\\Reflection\\Php\\Property>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected addParent( $element)
+	
+		
+		:Parameters:
+			* **$element** (:any:`phpDocumentor\\Reflection\\Php\\Interface\_ <phpDocumentor\\Reflection\\Php\\Interface\_>` | :any:`\\phpDocumentor\\Reflection\\Php\\Class\_ <phpDocumentor\\Reflection\\Php\\Class\_>`)  
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getLink( $type, $fqsen, $description="")
+	
+		
+		:Parameters:
+			* **$type**  string
+			* **$fqsen**  string
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected addUsedTraits( $element)
+	
+		
+		:Parameters:
+			* **$element** (:any:`phpDocumentor\\Reflection\\Php\\Class\_ <phpDocumentor\\Reflection\\Php\\Class\_>` | :any:`\\phpDocumentor\\Reflection\\Php\\Trait\_ <phpDocumentor\\Reflection\\Php\\Trait\_>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected addMethods( $methods)
+	
+		
+		:Parameters:
+			* **$methods**  
+
+		
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private addMethod( $method)
+	
+		
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private processMethodArgumentDocs( $method, $params)
+	
+		
+		:Parameters:
+			* **$method** (:any:`phpDocumentor\\Reflection\\Php\\Method <phpDocumentor\\Reflection\\Php\\Method>`)  
+			* **$params** (array)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private processMethodArgumentTypes( $method)
+	
+		
+		:Parameters:
+			* **$method** (:any:`phpDocumentor\\Reflection\\Php\\Method <phpDocumentor\\Reflection\\Php\\Method>`)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private processMethodArgumentType( $argument, $args)
+	
+		
+		:Parameters:
+			* **$argument** (:any:`phpDocumentor\\Reflection\\Php\\Argument <phpDocumentor\\Reflection\\Php\\Argument>`)  
+			* **$args** (string)  
+
+		
+		:Returns: string 
 	
 	
 

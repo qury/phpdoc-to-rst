@@ -1,10 +1,8 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
- *
- * @author Julius Härtl <jus@bitgrid.net>
- *
- * @license GNU AGPL version 3 or any later version
+ * @author    Julius Härtl <jus@bitgrid.net>
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -18,34 +16,34 @@
  *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
 namespace JuliusHaertl\PHPDocToRst\Extension;
 
+use Exception;
 use JuliusHaertl\PHPDocToRst\Builder\FileBuilder;
 use JuliusHaertl\PHPDocToRst\Builder\PhpDomainBuilder;
 use phpDocumentor\Reflection\Element;
 use phpDocumentor\Reflection\Php\File;
 
 /**
- * This extension adds a link to the source at github to all elements
+ * This extension adds a link to the source at github to all elements.
  *
  * Arguments
  * 0 => Url to the github repo (required)
  * 1 => Path to the git repository (required)
  * 2 => Branch to link to (default=master)
  */
-
-class GithubLocationExtension extends Extension {
-
+class GithubLocationExtension extends Extension
+{
     protected $basePath;
     protected $githubRepo;
     protected $branch = 'master';
 
-    public function prepare() {
+    public function prepare()
+    {
         if (count($this->arguments) < 2) {
-            throw new \Exception('GithubLocationExtension requires the following arguments githubUrl, basePath.');
+            throw new Exception('GithubLocationExtension requires the following arguments githubUrl, basePath.');
         }
         $this->basePath = $this->arguments[0];
         $this->githubRepo = $this->arguments[1];
@@ -55,11 +53,12 @@ class GithubLocationExtension extends Extension {
     }
 
     /**
-     * @param string $type
+     * @param string      $type
      * @param FileBuilder $builder
-     * @param Element $element
+     * @param Element     $element
      */
-    public function render($type, &$builder, $element) {
+    public function render($type, &$builder, $element)
+    {
         if (!$builder instanceof FileBuilder) {
             return;
         }
@@ -68,15 +67,15 @@ class GithubLocationExtension extends Extension {
                 return;
             }
             $filePath = $builder->getFile()->getPath();
-            $filePath = preg_replace('/^' . preg_quote($this->basePath, '/') . '/', '', $filePath);
+            $filePath = preg_replace('/^'.preg_quote($this->basePath, '/').'/', '', $filePath);
             $lineNumber = $element->getLocation()->getLineNumber();
             $url = $this->getGithubLink($filePath, $lineNumber, $this->branch);
-            $builder->addFieldList('Source', '`' . $filePath. '#' . $lineNumber . ' <'.$url.'>`_');
+            $builder->addFieldList('Source', '`'.$filePath.'#'.$lineNumber.' <'.$url.'>`_');
         }
     }
 
-    private function getGithubLink($file, $line=1, $branch='master') {
-        return $this->githubRepo . '/blob/'.$branch.'/'.$file.'#L' . $line;
+    private function getGithubLink($file, $line = 1, $branch = 'master')
+    {
+        return $this->githubRepo.'/blob/'.$branch.'/'.$file.'#L'.$line;
     }
-
 }

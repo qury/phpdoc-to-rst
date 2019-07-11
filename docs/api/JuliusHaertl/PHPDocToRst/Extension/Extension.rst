@@ -15,40 +15,17 @@ Extension
 .. php:class:: Extension
 
 
-	:Source:
-		`src/Extension/Extension.php#32 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Extension/Extension.php#L32>`_
-	
-
-
-Summary
--------
-
-Methods
-~~~~~~~
-
-* :php:meth:`public \_\_construct\($project, $arguments\)<JuliusHaertl\\PHPDocToRst\\Extension\\Extension::\_\_construct\(\)>`
-* :php:meth:`public prepare\(\)<JuliusHaertl\\PHPDocToRst\\Extension\\Extension::prepare\(\)>`
-* :php:meth:`public render\($type, $builder, $element\)<JuliusHaertl\\PHPDocToRst\\Extension\\Extension::render\(\)>`
-* :php:meth:`public shouldRenderElement\($element\)<JuliusHaertl\\PHPDocToRst\\Extension\\Extension::shouldRenderElement\(\)>`
-* :php:meth:`public shouldRenderIndex\($type, $element\)<JuliusHaertl\\PHPDocToRst\\Extension\\Extension::shouldRenderIndex\(\)>`
-
 
 Properties
 ----------
 
 .. php:attr:: protected static project
 
-	:Source:
-		`src/Extension/Extension.php#35 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Extension/Extension.php#L35>`_
-	
 	:Type: :any:`\\phpDocumentor\\Reflection\\Php\\Project <phpDocumentor\\Reflection\\Php\\Project>` 
 
 
 .. php:attr:: protected static arguments
 
-	:Source:
-		`src/Extension/Extension.php#38 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Extension/Extension.php#L38>`_
-	
 	:Type: array 
 
 
@@ -57,11 +34,8 @@ Methods
 
 .. rst-class:: public
 
-	.. php:method:: public __construct(phpDocumentor\\Reflection\\Php\\Project $project, $arguments=\[\])
+	.. php:method:: public __construct( $project, $arguments=\[\])
 	
-		:Source:
-			`src/Extension/Extension.php#40 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Extension/Extension.php#L40>`_
-		
 		
 	
 	
@@ -76,9 +50,6 @@ Methods
 			| This is useful for preparing own data structures
 			| to be used in the output documentation
 			
-		
-		:Source:
-			`src/Extension/Extension.php#50 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Extension/Extension.php#L50>`_
 		
 		
 	
@@ -100,9 +71,6 @@ Methods
 			|  \- PhpDomainBuilder::SECTION\_AFTER\_DESCRIPTION
 			
 		
-		:Source:
-			`src/Extension/Extension.php#67 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Extension/Extension.php#L67>`_
-		
 		
 		:Parameters:
 			* **$type** (string)  
@@ -115,7 +83,7 @@ Methods
 
 .. rst-class:: public
 
-	.. php:method:: public shouldRenderElement(phpDocumentor\\Reflection\\Element $element)
+	.. php:method:: public shouldRenderElement( $element)
 	
 		.. rst-class:: phpdoc-description
 		
@@ -124,9 +92,6 @@ Methods
 			
 			| An example extension that makes use of it is PublicOnlyExtension
 			
-		
-		:Source:
-			`src/Extension/Extension.php#80 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Extension/Extension.php#L80>`_
 		
 		
 		:Parameters:
@@ -141,9 +106,6 @@ Methods
 
 	.. php:method:: public shouldRenderIndex( $type, $element)
 	
-		:Source:
-			`src/Extension/Extension.php#84 <https://github.com/juliushaertl/phpdoc-to-rst/blob/master/src/Extension/Extension.php#L84>`_
-		
 		
 	
 	

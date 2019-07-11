@@ -1,10 +1,8 @@
 <?php
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
- *
- * @author Julius Härtl <jus@bitgrid.net>
- *
- * @license GNU AGPL version 3 or any later version
+ * @author    Julius Härtl <jus@bitgrid.net>
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -18,38 +16,38 @@
  *
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
 namespace JuliusHaertl\PHPDocToRst;
 
+use Exception;
+use JuliusHaertl\PHPDocToRst\Builder\ClassFileBuilder;
+use JuliusHaertl\PHPDocToRst\Builder\InterfaceFileBuilder;
+use JuliusHaertl\PHPDocToRst\Builder\MainIndexBuilder;
+use JuliusHaertl\PHPDocToRst\Builder\NamespaceIndexBuilder;
 use JuliusHaertl\PHPDocToRst\Builder\PhpDomainBuilder;
 use JuliusHaertl\PHPDocToRst\Builder\TraitFileBuilder;
+use JuliusHaertl\PHPDocToRst\Extension\Extension;
 use JuliusHaertl\PHPDocToRst\Middleware\ErrorHandlingMiddleware;
 use phpDocumentor\Reflection\DocBlockFactory;
 use phpDocumentor\Reflection\File\LocalFile;
+use phpDocumentor\Reflection\Php\Factory;
 use phpDocumentor\Reflection\Php\Namespace_;
 use phpDocumentor\Reflection\Php\NodesFactory;
 use phpDocumentor\Reflection\Php\Project;
 use phpDocumentor\Reflection\Php\ProjectFactory;
-use phpDocumentor\Reflection\Php\Factory;
-use JuliusHaertl\PHPDocToRst\Builder\MainIndexBuilder;
-use JuliusHaertl\PHPDocToRst\Builder\NamespaceIndexBuilder;
-use JuliusHaertl\PHPDocToRst\Extension\Extension;
-use JuliusHaertl\PHPDocToRst\Builder\ClassFileBuilder;
-use JuliusHaertl\PHPDocToRst\Builder\InterfaceFileBuilder;
 use phpDocumentor\Reflection\PrettyPrinter;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 /**
  * This class is used to parse a project tree and generate rst files
- * for all of the containing PHP structures
+ * for all of the containing PHP structures.
  *
  * Example usage is documented in examples/example.php
- *
- * @package JuliusHaertl\PHPDocToRst
  */
-final class ApiDocBuilder {
-
+final class ApiDocBuilder
+{
     /** @var Project */
     private $project;
 
@@ -68,7 +66,7 @@ final class ApiDocBuilder {
     /** @var string[] */
     private $extensionNames = [];
 
-    /** @var [][] */
+    /** @var array[] */
     private $extensionArguments = [];
 
     /** @var string[] */
@@ -87,17 +85,19 @@ final class ApiDocBuilder {
      * ApiDocBuilder constructor.
      *
      * @param string[] $srcDir array of paths that should be analysed
-     * @param string $dstDir path where the output documentation should be stored
+     * @param string   $dstDir path where the output documentation should be stored
      */
-    public function __construct($srcDir, $dstDir) {
+    public function __construct($srcDir, $dstDir)
+    {
         $this->dstDir = $dstDir;
-        $this->srcDir = (array)$srcDir;
+        $this->srcDir = (array) $srcDir;
     }
 
     /**
-     * Run this to build the documentation
+     * Run this to build the documentation.
      */
-    public function build() {
+    public function build()
+    {
         $this->setupReflection();
         $this->createDirectoryStructure();
         $this->parseFiles();
@@ -107,64 +107,25 @@ final class ApiDocBuilder {
     /* hacky logging for cli */
 
     /**
-     * Enable verbose logging output
-     *
-     * @param bool $v Set to true to enable
+     * @throws Exception
      */
-    public function setVerboseOutput($v) {
-        $this->verboseOutput = $v;
-    }
-
-    /**
-     * Enable debug logging output
-     *
-     * @param bool $v Set to true to enable
-     */
-    public function setDebugOutput($v) {
-        $this->debugOutput = $v;
-    }
-
-    /**
-     * Log a message
-     *
-     * @param string $message Message to be logged
-     */
-    public function log($message) {
-        if ($this->verboseOutput) {
-            echo $message . PHP_EOL;
-        }
-    }
-
-    /**
-     * Log a debug message
-     *
-     * @param string $message Message to be logged
-     */
-    public function debug($message) {
-        if ($this->debugOutput) {
-            echo $message . PHP_EOL;
-        }
-    }
-
-    /**
-     * @throws \Exception
-     */
-    private function setupReflection() {
-
+    private function setupReflection()
+    {
         $interfaceList = [];
         $this->log('Start parsing files.');
         foreach ($this->srcDir as $srcDir) {
-            $dir = new \RecursiveDirectoryIterator($srcDir);
-            $files = new \RecursiveIteratorIterator($dir);
+            $dir = new RecursiveDirectoryIterator($srcDir);
+            $files = new RecursiveIteratorIterator($dir);
 
             foreach ($files as $file) {
                 if ($file->isDir()) {
                     continue;
                 }
+
                 try {
                     $interfaceList[] = new LocalFile($file->getPathname());
-                } catch (\Exception $e) {
-                    $this->log('Failed to load ' . $file->getPathname() . PHP_EOL);
+                } catch (Exception $e) {
+                    $this->log('Failed to load '.$file->getPathname().PHP_EOL);
                 }
             }
         }
@@ -174,9 +135,8 @@ final class ApiDocBuilder {
             new Factory\Class_(),
             new Factory\Constant(new PrettyPrinter()),
             new Factory\DocBlock(DocBlockFactory::createInstance()),
-            new Factory\File(NodesFactory::createInstance(),
-                [
-                    new ErrorHandlingMiddleware($this)
+            new Factory\File(NodesFactory::createInstance(), [
+                    new ErrorHandlingMiddleware($this),
                 ]),
             new Factory\Function_(),
             new Factory\Interface_(),
@@ -191,89 +151,94 @@ final class ApiDocBuilder {
         foreach ($this->extensionNames as $extensionName) {
             $extension = new $extensionName($this->project, $this->extensionArguments[$extensionName]);
             if (!is_subclass_of($extension, Extension::class)) {
-                $this->log('Failed to load extension ' . $extensionName . '.');
+                $this->log('Failed to load extension '.$extensionName.'.');
             }
             $this->extensions[] = $extension;
-            $this->log('Extension ' . $extensionName . ' loaded.');
+            $this->log('Extension '.$extensionName.' loaded.');
         }
     }
 
     /**
-     * @param string $class name of the extension class
-     * @throws \Exception
+     * Log a message.
+     *
+     * @param string $message Message to be logged
      */
-    public function addExtension($class, $arguments=[]) {
-        $this->extensionNames[] = $class;
-        $this->extensionArguments[$class] = $arguments;
-
+    public function log($message)
+    {
+        if ($this->verboseOutput) {
+            echo $message.PHP_EOL;
+        }
     }
 
     /**
-     * Create directory structure for the rst output
+     * Create directory structure for the rst output.
+     *
      * @throws WriteException
      */
-    private function createDirectoryStructure() {
+    private function createDirectoryStructure()
+    {
         foreach ($this->project->getNamespaces() as $namespace) {
-            $namespaceDir = $this->dstDir . str_replace('\\', '/', $namespace->getFqsen());
+            $namespaceDir = $this->dstDir.str_replace('\\', '/', $namespace->getFqsen());
             if (is_dir($namespaceDir)) {
                 continue;
             }
             if (!mkdir($namespaceDir, 0755, true)) {
-                throw new WriteException('Could not create directory ' . $namespaceDir);
+                throw new WriteException('Could not create directory '.$namespaceDir);
             }
         }
     }
 
-    private function parseFiles() {
+    private function parseFiles()
+    {
         /** @var Extension $extension */
         foreach ($this->extensions as $extension) {
             $extension->prepare();
         }
         $this->log('Start building files');
         foreach ($this->project->getFiles() as $file) {
-            /**
+            /*
              * Go though interfaces/classes/functions of files and build documentation
              */
             foreach ($file->getInterfaces() as $interface) {
                 $fqsen = $interface->getFqsen();
                 $builder = new InterfaceFileBuilder($file, $interface, $this->extensions);
-                $filename = $this->dstDir . str_replace('\\', '/', $fqsen) . '.rst';
+                $filename = $this->dstDir.str_replace('\\', '/', $fqsen).'.rst';
                 file_put_contents($filename, $builder->getContent());
-                $this->docFiles[(string)$interface->getFqsen()] = str_replace('\\', '/', $fqsen);
+                $this->docFiles[(string) $interface->getFqsen()] = str_replace('\\', '/', $fqsen);
 
                 // also build root namespace in indexes
-                if (strpos((string)substr($fqsen, 1), '\\') === false) {
+                if (strpos((string) substr($fqsen, 1), '\\') === false) {
                     $this->project->getRootNamespace()->addInterface($fqsen);
                 }
-                $this->debug('Written interface documentation to ' . $filename);
+                $this->debug('Written interface documentation to '.$filename);
             }
 
             foreach ($file->getClasses() as $class) {
                 $fqsen = $class->getFqsen();
                 $builder = new ClassFileBuilder($file, $class, $this->extensions);
-                $filename = $this->dstDir . str_replace('\\', '/', $fqsen) . '.rst';
+                $filename = $this->dstDir.str_replace('\\', '/', $fqsen).'.rst';
                 file_put_contents($filename, $builder->getContent());
-                $this->docFiles[(string)$class->getFqsen()] = str_replace('\\', '/', $fqsen);
+                $this->docFiles[(string) $class->getFqsen()] = str_replace('\\', '/', $fqsen);
 
                 // also build root namespace in indexes
-                if (strpos((string)substr($class->getFqsen(), 1), '\\') === false) {
+                if (strpos((string) substr($class->getFqsen(), 1), '\\') === false) {
                     $this->project->getRootNamespace()->addClass($fqsen);
                 }
-                $this->debug('Written class documentation to ' . $filename);
+                $this->debug('Written class documentation to '.$filename);
             }
 
             foreach ($file->getTraits() as $trait) {
                 $fqsen = $trait->getFqsen();
                 $builder = new TraitFileBuilder($file, $trait, $this->extensions);
-                $filename = $this->dstDir . str_replace('\\', '/', $fqsen) . '.rst';
+                $filename = $this->dstDir.str_replace('\\', '/', $fqsen).'.rst';
                 file_put_contents($filename, $builder->getContent());
-                $this->docFiles[(string)$trait->getFqsen()] = str_replace('\\', '/', $fqsen);
+                $this->docFiles[(string) $trait->getFqsen()] = str_replace('\\', '/', $fqsen);
 
                 // also build root namespace in indexes
-                if (strpos((string)substr($fqsen, 1), '\\') === false) {
+                if (strpos((string) substr($fqsen, 1), '\\') === false) {
                     $this->project->getRootNamespace()->addTrait($fqsen);
                 }
-                $this->debug('Written trait documentation to ' . $filename);
+                $this->debug('Written trait documentation to '.$filename);
             }
 
             // build array of functions per namespace
@@ -294,11 +259,23 @@ final class ApiDocBuilder {
                 }
                 $this->constants[$namespace][] = $constant;
             }
-
         }
     }
 
-    private function buildIndexes() {
+    /**
+     * Log a debug message.
+     *
+     * @param string $message Message to be logged
+     */
+    public function debug($message)
+    {
+        if ($this->debugOutput) {
+            echo $message.PHP_EOL;
+        }
+    }
+
+    private function buildIndexes()
+    {
         $this->log('Build indexes.');
         $namespaces = $this->project->getNamespaces();
         $namespaces['\\'] = $this->project->getRootNamespace();
@@ -307,8 +284,8 @@ final class ApiDocBuilder {
         });
         /** @var Namespace_ $namespace */
         foreach ($namespaces as $namespace) {
-            $fqsen = (string)$namespace->getFqsen();
-            $this->debug('Build namespace index for ' . $fqsen);
+            $fqsen = (string) $namespace->getFqsen();
+            $this->debug('Build namespace index for '.$fqsen);
             $functions = [];
             $constants = [];
             if (array_key_exists($fqsen, $this->functions)) {
@@ -319,14 +296,45 @@ final class ApiDocBuilder {
             }
             $builder = new NamespaceIndexBuilder($this->extensions, $namespaces, $namespace, $functions, $constants);
             $builder->render();
-            $path = $this->dstDir . str_replace('\\', '/', $fqsen) . '/index.rst';
+            $path = $this->dstDir.str_replace('\\', '/', $fqsen).'/index.rst';
             file_put_contents($path, $builder->getContent());
         }
 
         $this->log('Build main index files.');
         $builder = new MainIndexBuilder($namespaces);
         $builder->render();
-        $path = $this->dstDir . '/index-namespaces-all.rst';
+        $path = $this->dstDir.'/index-namespaces-all.rst';
         file_put_contents($path, $builder->getContent());
+    }
+
+    /**
+     * Enable verbose logging output.
+     *
+     * @param bool $v Set to true to enable
+     */
+    public function setVerboseOutput($v)
+    {
+        $this->verboseOutput = $v;
+    }
+
+    /**
+     * Enable debug logging output.
+     *
+     * @param bool $v Set to true to enable
+     */
+    public function setDebugOutput($v)
+    {
+        $this->debugOutput = $v;
+    }
+
+    /**
+     * @param string $class name of the extension class
+     *
+     * @throws Exception
+     */
+    public function addExtension($class, $arguments = [])
+    {
+        $this->extensionNames[] = $class;
+        $this->extensionArguments[$class] = $arguments;
     }
 }
