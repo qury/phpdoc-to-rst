@@ -216,30 +216,42 @@ class PhpDomainBuilder extends RstBuilder
      */
     protected function addDocblockTag($tagName, DocBlock $docBlock)
     {
+        $inclusion_tag_name = [
+            'return',
+            'var',
+            'throws',
+            'since',
+            'deprecated',
+            'see',
+            'license',
+        ];
+
         $tags = $docBlock->getTagsByName($tagName);
+
+        if(!in_array($tagName,$inclusion_tag_name))
+        {
+            return '';
+        }
+
+        if(in_array($tagName,$inclusion_tag_name) && count($tags) === 0)
+        {
+            return '';
+        }
+
         switch ($tagName) {
             case 'return':
-                if (count($tags) === 0) {
-                    return;
-                }
                 /** @var Return_ $return */
                 $return = $tags[0];
                 $this->addMultiline(':Returns: ' . self::typesToRst($return->getType()) . ' ' . RstBuilder::escape($return->getDescription()),
                     true);
                 break;
             case 'var':
-                if (count($tags) === 0) {
-                    return;
-                }
                 /** @var DocBlock\Tags\Var_ $return */
                 $return = $tags[0];
                 $this->addMultiline(':Type: ' . self::typesToRst($return->getType()) . ' ' . RstBuilder::escape($return->getDescription()),
                     true);
                 break;
             case 'throws':
-                if (count($tags) === 0) {
-                    return;
-                }
                 /** @var Throws $tag */
                 foreach ($tags as $tag) {
                     $this->addMultiline(':Throws: ' . self::typesToRst($tag->getType()) . ' ' . RstBuilder::escape($tag->getDescription()),
@@ -247,45 +259,27 @@ class PhpDomainBuilder extends RstBuilder
                 }
                 break;
             case 'since':
-                if (count($tags) === 0) {
-                    return;
-                }
                 /** @var Since $return */
                 $return = $tags[0];
                 $this->addMultiline(':Since: ' . $return->getVersion() . ' ' . RstBuilder::escape($return->getDescription()),
                     true);
                 break;
             case 'deprecated':
-                if (count($tags) === 0) {
-                    return;
-                }
                 /** @var Deprecated $return */
                 $return = $tags[0];
                 $this->addMultiline(':Deprecated: ' . $return->getVersion() . ' ' . RstBuilder::escape($return->getDescription()),
                     true);
                 break;
             case 'see':
-                if (count($tags) === 0) {
-                    return;
-                }
                 /** @var See $return */
                 $return = $tags[0];
                 $this->addMultiline(':See: ' . self::typesToRst($return->getReference()) . ' ' . RstBuilder::escape($return->getDescription()),
                     true);
                 break;
             case 'license':
-                if (count($tags) === 0) {
-                    return;
-                }
                 /** @var DocBlock\Tags\BaseTag $return */
                 $return = $tags[0];
                 $this->addMultiline(':License: ' . RstBuilder::escape($return->getDescription()), true);
-                break;
-            case 'param':
-                // param handling is done by subclasses since it is more that docbook parsing
-                break;
-            default:
-                //echo 'Tag handling not defined for: ' . $tag . PHP_EOL;
                 break;
         }
 
@@ -455,29 +449,6 @@ class PhpDomainBuilder extends RstBuilder
             }
             $deprecated = $docBlock->getTagsByName('deprecated');
         }
-        $args = '';
-        /** @var Argument $argument */
-        foreach ($method->getArguments() as $argument) {
-            // This will work after https://github.com/phpDocumentor/Reflection/pull/109 is merged
-            foreach ($argument->getType() as $type) {
-                $args .= self::escape($type) . '|';
-            }
-            $args = substr($args, 0, -1) . ' ';
-            if ($argument->isVariadic()) {
-                $args .= '...';
-            }
-            if ($argument->isByReference()) {
-                $args .= '&';
-            }
-            $args    .= '$' . $argument->getName();
-            $default = $argument->getDefault();
-            if ($default !== NULL) {
-                $default = $default === '' ? '""' : $default;
-                $args    .= '=' . self::escape($default);
-            }
-            $args .= ', ';
-        }
-        $args = substr($args, 0, -2);
 
         $modifiers  = $method->getVisibility();
         $modifiers  .= $method->isAbstract() ? ' abstract' : '';
@@ -486,37 +457,13 @@ class PhpDomainBuilder extends RstBuilder
         $deprecated = count($deprecated) > 0 ? ' deprecated' : '';
         $this->addLine('.. rst-class:: ' . $modifiers . $deprecated)->addLine();
         $this->indent();
+
+        $args = $this->processMethodArgumentTypes($method);
         $this->beginPhpDomain('method', $modifiers . ' ' . $method->getName() . '(' . $args . ')');
         $this->addDocBlockDescription($method);
         $this->addLine();
         if (!empty($params)) {
-            $parameterDetails = '';
-            foreach ($method->getArguments() as $argument) {
-                if (!array_key_exists($argument->getName(), $params)) {
-                    continue;
-                }
-                /** @var Param $param */
-                $param = $params[$argument->getName()];
-                if ($param !== NULL) {
-                    $typString = $param->getType();
-                    // Remove first \ to allow references
-                    if (0 === strpos($typString, '\\')) {
-                        $typString = substr($typString, 1);
-                    }
-                    $paramItem = '* ';
-                    $paramItem .= '**';
-                    if($argument->isVariadic())
-                    {
-                        $paramItem .= '...';
-                    }
-                    $paramItem .= '$' . $argument->getName() . '** ';
-                    if ($typString !== NULL) {
-                        $paramItem .= '(' . self::typesToRst($typString) . ') ';
-                    }
-                    $paramItem        .= ' ' . $param->getDescription();
-                    $parameterDetails .= $paramItem . PHP_EOL;
-                }
-            }
+            $parameterDetails = $this->processMethodArgumentDocs($method, $params);
             $this->addFieldList('Parameters', $parameterDetails);
         }
         if ($docBlock !== NULL) {
@@ -526,6 +473,87 @@ class PhpDomainBuilder extends RstBuilder
         }
         $this->endPhpDomain('method');
         $this->unindent();
+    }
+
+    /**
+     * @param Method $method
+     * @param array  $params
+     *
+     * @return string
+     */
+    private function processMethodArgumentDocs(Method $method, array $params): string
+    {
+        $parameterDetails = '';
+        foreach ($method->getArguments() as $argument) {
+            if (!array_key_exists($argument->getName(), $params)) {
+                continue;
+            }
+            /** @var Param $param */
+            $param = $params[$argument->getName()];
+            if ($param !== NULL) {
+                $typString = $param->getType();
+                // Remove first \ to allow references
+                if (0 === strpos($typString, '\\')) {
+                    $typString = substr($typString, 1);
+                }
+                $paramItem = '* ';
+                $paramItem .= '**';
+                if ($argument->isVariadic()) {
+                    $paramItem .= '...';
+                }
+                $paramItem .= '$' . $argument->getName() . '** ';
+                if ($typString !== NULL) {
+                    $paramItem .= '(' . self::typesToRst($typString) . ') ';
+                }
+                $paramItem        .= ' ' . $param->getDescription();
+                $parameterDetails .= $paramItem . PHP_EOL;
+            }
+        }
+        return $parameterDetails;
+    }
+
+    /**
+     * @param Method $method
+     *
+     * @return string
+     */
+    private function processMethodArgumentTypes(Method $method): string
+    {
+        $args = '';
+        /** @var Argument $argument */
+        foreach ($method->getArguments() as $argument) {
+            $args= $this->processMethodArgumentType($argument, $args);
+        }
+        $args = substr($args, 0, -2);
+        return $args;
+    }
+
+    /**
+     * @param Argument $argument
+     * @param string   $args
+     *
+     * @return string
+     */
+    private function processMethodArgumentType(Argument $argument, string $args): string
+    {
+        foreach ($argument->getType() as $type) {
+            $args .= self::escape($type) . '|';
+        }
+        $args = substr($args, 0, -1) . ' ';
+        if ($argument->isVariadic()) {
+            $args .= '...';
+        }
+        if ($argument->isByReference()) {
+            $args .= '&';
+        }
+        $args    .= '$' . $argument->getName();
+        $default = $argument->getDefault();
+        if ($default !== NULL) {
+            $default = $default === '' ? '""' : $default;
+            $args    .= '=' . self::escape($default);
+        }
+        $args .= ', ';
+        return $args;
     }
 
 

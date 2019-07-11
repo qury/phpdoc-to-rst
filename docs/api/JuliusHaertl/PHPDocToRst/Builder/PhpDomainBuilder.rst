@@ -287,3 +287,44 @@ Methods
 	
 	
 
+.. rst-class:: private
+
+	.. php:method:: private processMethodArgumentDocs( $method, $params)
+	
+		
+		:Parameters:
+			* **$method** (:any:`phpDocumentor\\Reflection\\Php\\Method <phpDocumentor\\Reflection\\Php\\Method>`)  
+			* **$params** (array)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private processMethodArgumentTypes( $method)
+	
+		
+		:Parameters:
+			* **$method** (:any:`phpDocumentor\\Reflection\\Php\\Method <phpDocumentor\\Reflection\\Php\\Method>`)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: private
+
+	.. php:method:: private processMethodArgumentType( $argument, $args)
+	
+		
+		:Parameters:
+			* **$argument** (:any:`phpDocumentor\\Reflection\\Php\\Argument <phpDocumentor\\Reflection\\Php\\Argument>`)  
+			* **$args** (string)  
+
+		
+		:Returns: string 
+	
+	
+
