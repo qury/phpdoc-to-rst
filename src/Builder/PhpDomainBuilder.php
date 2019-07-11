@@ -515,6 +515,7 @@ class PhpDomainBuilder extends RstBuilder
         foreach ($method->getArguments() as $argument) {
             $args = $this->processMethodArgumentType($argument, $args);
         }
+
         return substr($args, 0, -2);
     }
 

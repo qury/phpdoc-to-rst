@@ -26,7 +26,7 @@ class DocGenerationTest extends PHPUnit_Framework_TestCase
         $apiDocBuilder->addExtension(InterfaceImplementors::class);
         $apiDocBuilder->addExtension(GithubLocationExtension::class, [
             __DIR__.'/../src',
-            'http://github.com/abbadon1334/phpdoc-to-rst/'
+            'http://github.com/abbadon1334/phpdoc-to-rst/',
         ]);
         $apiDocBuilder->build();
     }
