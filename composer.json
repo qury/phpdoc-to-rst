@@ -20,7 +20,7 @@
             "name": "Julius Härtl",
             "email": "jus@bitgrid.net"
         },
-           {
+        {
             "name": "Ferenc Kurucz",
             "email": "ferenc.kurucz.6351@gmail.com"
         }
@@ -28,9 +28,18 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "JuliusHaertl\\PHPDocToRst\\": ["src"],
-            "JuliusHaertl\\PHPDocToRst\\Test\\": ["tests"]
+            "JuliusHaertl\\PHPDocToRst\\": "src/"
         }
     },
-    "bin": ["bin/phpdoc-to-rst"]
+    "autoload-dev": {
+        "psr-4": {
+            "JuliusHaertl\\PHPDocToRst\\Test\\": "tests/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "bin": [
+        "bin/phpdoc-to-rst"
+    ]
 }
