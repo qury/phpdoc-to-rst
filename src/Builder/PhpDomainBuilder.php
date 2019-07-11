@@ -223,12 +223,8 @@ class PhpDomainBuilder extends RstBuilder
 
         $tags = $docBlock->getTagsByName($tagName);
 
-        if (!in_array($tagName, $inclusion_tag_name)) {
-            return '';
-        }
-
-        if (in_array($tagName, $inclusion_tag_name) && count($tags) === 0) {
-            return '';
+        if (!in_array($tagName, $inclusion_tag_name) || (in_array($tagName, $inclusion_tag_name) && count($tags) === 0)) {
+            return;
         }
 
         switch ($tagName) {
@@ -519,9 +515,8 @@ class PhpDomainBuilder extends RstBuilder
         foreach ($method->getArguments() as $argument) {
             $args = $this->processMethodArgumentType($argument, $args);
         }
-        $args = substr($args, 0, -2);
 
-        return $args;
+        return substr($args, 0, -2);
     }
 
     /**

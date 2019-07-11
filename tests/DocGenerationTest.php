@@ -20,7 +20,14 @@ class DocGenerationTest extends PHPUnit_Framework_TestCase
         $apiDocBuilder = new ApiDocBuilder($src, $dst);
         $apiDocBuilder->setVerboseOutput(true);
         $apiDocBuilder->setDebugOutput(true);
+        //$apiDocBuilder->addExtension(PublicOnlyExtension::class);
+        //$apiDocBuilder->addExtension(NoPrivateExtension::class);
+        $apiDocBuilder->addExtension(TocExtension::class);
         $apiDocBuilder->addExtension(InterfaceImplementors::class);
+        $apiDocBuilder->addExtension(GithubLocationExtension::class, [
+            __DIR__.'/../src',
+            'http://github.com/abbadon1334/phpdoc-to-rst/',
+        ]);
         $apiDocBuilder->build();
     }
 
@@ -73,7 +80,7 @@ class DocGenerationTest extends PHPUnit_Framework_TestCase
         $apiDocBuilder->addExtension(TocExtension::class);
         $apiDocBuilder->addExtension(InterfaceImplementors::class);
         $apiDocBuilder->addExtension(GithubLocationExtension::class, [
-            'http://github.com/abbadon1334',
+            'http://github.com/abbadon1334/phpdoc-to-rst',
             'phpdoc-to-rst',
             'master',
         ]);

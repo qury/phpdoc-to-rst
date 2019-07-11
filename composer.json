@@ -8,6 +8,7 @@
         "symfony/console": "^4.0"
     },
     "require-dev": {
+        "codacy/coverage": "dev-master",
         "phpunit/phpunit": "*"
     },
     "license": "AGPL-3.0-or-later",
