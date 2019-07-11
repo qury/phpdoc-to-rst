@@ -201,11 +201,13 @@ final class ApiDocBuilder
             /*
              * Go though interfaces/classes/functions of files and build documentation
              */
+
             $this->parseInterfaces($file);
             $this->parseClasses($file);
             $this->parseTraits($file);
             $this->parseFunctions($file);
             $this->parseConstants($file);
+
         }
     }
 
@@ -287,8 +289,6 @@ final class ApiDocBuilder
 
     /**
      * @param \phpDocumentor\Reflection\Php\File $file
-     *
-     * @return array
      */
     private function parseInterfaces(\phpDocumentor\Reflection\Php\File $file): void
     {
@@ -309,8 +309,6 @@ final class ApiDocBuilder
 
     /**
      * @param \phpDocumentor\Reflection\Php\File $file
-     *
-     * @return array
      */
     private function parseClasses(\phpDocumentor\Reflection\Php\File $file): void
     {
@@ -351,8 +349,6 @@ final class ApiDocBuilder
 
     /**
      * @param \phpDocumentor\Reflection\Php\File $file
-     *
-     * @return bool|string
      */
     private function parseFunctions(\phpDocumentor\Reflection\Php\File $file) :void
     {
