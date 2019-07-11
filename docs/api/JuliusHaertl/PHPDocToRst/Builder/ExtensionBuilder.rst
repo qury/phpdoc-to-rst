@@ -13,12 +13,18 @@ ExtensionBuilder
 .. php:trait:: ExtensionBuilder
 
 
+	:Source:
+		`/Builder/ExtensionBuilder.php#13 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/ExtensionBuilder.php#L13>`_
+	
 
 Properties
 ----------
 
 .. php:attr:: protected static extensions
 
+	:Source:
+		`/Builder/ExtensionBuilder.php#16 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/ExtensionBuilder.php#L16>`_
+	
 	:Type: :any:`\\JuliusHaertl\\PHPDocToRst\\Extension\\Extension\[\] <JuliusHaertl\\PHPDocToRst\\Extension\\Extension>` 
 
 
@@ -29,6 +35,9 @@ Methods
 
 	.. php:method:: public __construct( $extensions)
 	
+		:Source:
+			`/Builder/ExtensionBuilder.php#18 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/ExtensionBuilder.php#L18>`_
+		
 		
 	
 	
@@ -37,6 +46,9 @@ Methods
 
 	.. php:method:: protected callExtensions( $type, $element)
 	
+		:Source:
+			`/Builder/ExtensionBuilder.php#23 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/ExtensionBuilder.php#L23>`_
+		
 		
 	
 	

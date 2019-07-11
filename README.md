@@ -7,7 +7,6 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/badges/build.png?b=master)](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/build-status/master)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/abbadon1334/phpdoc-to-rst/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 Forked and refactor by Francesco "Abbadon1334" Danti.
 
