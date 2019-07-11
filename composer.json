@@ -1,5 +1,5 @@
 {
-    "name": "qury/phpdoc-to-rst",
+    "name": "abbadon1334/phpdoc-to-rst",
     "description": "Generate Sphinx/ReStructured documentation from PHPDoc",
     "type": "library",
     "require": {
@@ -12,6 +12,10 @@
     },
     "license": "AGPL-3.0-or-later",
     "authors": [
+        {
+            "name": "Francesco Danti",
+            "email": "fdanti@gmail.com"
+        },
         {
             "name": "Julius Härtl",
             "email": "jus@bitgrid.net"
