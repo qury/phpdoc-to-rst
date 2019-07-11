@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -28,9 +28,11 @@ use phpDocumentor\Reflection\Php\Argument;
 use phpDocumentor\Reflection\Php\Class_;
 use phpDocumentor\Reflection\Php\Trait_;
 
-class TraitFileBuilder extends FileBuilder {
+class TraitFileBuilder extends FileBuilder
+{
 
-    protected function render() {
+    protected function render()
+    {
         /** @var Trait_ $trait */
         $trait = $this->element;
 

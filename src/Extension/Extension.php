@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -25,11 +25,11 @@ namespace JuliusHaertl\PHPDocToRst\Extension;
 
 
 use JuliusHaertl\PHPDocToRst\Builder\ExtensionBuilder;
-use JuliusHaertl\PHPDocToRst\Builder\FileBuilder;
 use phpDocumentor\Reflection\Element;
 use phpDocumentor\Reflection\Php\Project;
 
-abstract class Extension {
+abstract class Extension
+{
 
     /** @var Project */
     protected $project;
@@ -37,8 +37,9 @@ abstract class Extension {
     /** @var array */
     protected $arguments;
 
-    public function __construct(Project $project, $arguments=[]) {
-        $this->project = $project;
+    public function __construct(Project $project, $arguments = [])
+    {
+        $this->project   = $project;
         $this->arguments = $arguments;
     }
 
@@ -47,7 +48,8 @@ abstract class Extension {
      * This is useful for preparing own data structures
      * to be used in the output documentation
      */
-    public function prepare() {
+    public function prepare()
+    {
 
     }
 
@@ -60,11 +62,12 @@ abstract class Extension {
      *  - PhpDomainBuilder::SECTION_BEFORE_DESCRIPTION
      *  - PhpDomainBuilder::SECTION_AFTER_DESCRIPTION
      *
-     * @param string $type
+     * @param string           $type
      * @param ExtensionBuilder $builder
-     * @param Element $element context for the render type
+     * @param Element          $element context for the render type
      */
-    public function render($type, &$builder, $element) {
+    public function render($type, &$builder, $element)
+    {
 
     }
 
@@ -75,13 +78,16 @@ abstract class Extension {
      * An example extension that makes use of it is PublicOnlyExtension
      *
      * @param Element $element
+     *
      * @return bool
      */
-    public function shouldRenderElement(Element $element) {
+    public function shouldRenderElement(Element $element)
+    {
         return true;
     }
 
-    public function shouldRenderIndex($type, $element) {
+    public function shouldRenderIndex($type, $element)
+    {
         return true;
     }
 

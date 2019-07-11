@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -27,9 +27,11 @@ use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\Php\Interface_;
 
 
-class InterfaceFileBuilder extends FileBuilder {
+class InterfaceFileBuilder extends FileBuilder
+{
 
-    protected function render() {
+    protected function render()
+    {
         /** @var Interface_ $interface */
         $interface = $this->element;
 

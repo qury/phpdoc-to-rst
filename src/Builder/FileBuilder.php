@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -32,7 +32,8 @@ use phpDocumentor\Reflection\Php\File;
  *
  * @package JuliusHaertl\PHPDocToRst\Builder
  */
-abstract class FileBuilder extends PhpDomainBuilder {
+abstract class FileBuilder extends PhpDomainBuilder
+{
 
     /** @var File */
     protected $file;
@@ -43,26 +44,29 @@ abstract class FileBuilder extends PhpDomainBuilder {
     /** @var Extension[] */
     protected $extensions = [];
 
-    protected abstract function render();
-
-    public function __construct($file, $element, $extensions) {
+    public function __construct($file, $element, $extensions)
+    {
         parent::__construct($extensions);
-        $this->file = $file;
+        $this->file    = $file;
         $this->element = $element;
         $this->render();
     }
 
+    protected abstract function render();
+
     /**
      * @return Element that is used to build the rst file
      */
-    public function getElement() {
+    public function getElement()
+    {
         return $this->element;
     }
 
     /**
      * @return File
      */
-    public function getFile() {
+    public function getFile()
+    {
         return $this->file;
     }
 

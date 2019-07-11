@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -28,10 +28,11 @@ use JuliusHaertl\PHPDocToRst\Builder\NamespaceIndexBuilder;
 /**
  * Example for hiding a section in the namespace index page
  */
+class HideChildNamespaces extends Extension
+{
 
-class HideChildNamespaces extends Extension {
-
-    public function shouldRenderIndex($type, $element) {
+    public function shouldRenderIndex($type, $element)
+    {
         if ($type === NamespaceIndexBuilder::RENDER_INDEX_NAMESPACE) {
             return false;
         }

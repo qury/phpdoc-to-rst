@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -31,18 +31,20 @@ use phpDocumentor\Reflection\Php\Interface_;
 
 /**
  * Class InterfaceImplementors
+ *
  * @package JuliusHaertl\PHPDocToRst\Extension
  *
  * This extension parses all classes and interface relations.
  * A link to all classes implementing a specific interface
  * is added to the interface documentation.
  */
-
-class InterfaceImplementors extends Extension {
+class InterfaceImplementors extends Extension
+{
 
     private $implementors = [];
 
-    public function prepare() {
+    public function prepare()
+    {
         foreach ($this->project->getFiles() as $file) {
             foreach ($file->getClasses() as $class) {
                 foreach ($class->getInterfaces() as $interface) {
@@ -56,18 +58,19 @@ class InterfaceImplementors extends Extension {
     }
 
     /**
-     * @param string $type
+     * @param string      $type
      * @param FileBuilder $builder
-     * @param Element $element
+     * @param Element     $element
      */
-    public function render($type, &$builder, $element) {
+    public function render($type, &$builder, $element)
+    {
         if (!$builder instanceof FileBuilder || !$element instanceof Interface_) {
             return;
         }
         if ($type === PhpDomainBuilder::SECTION_AFTER_DESCRIPTION && $builder->getElement() instanceof Interface_) {
             /** @var Interface_ $interface */
             $interface = $builder->getElement();
-            $content = '';
+            $content   = '';
             if (!array_key_exists((string)$interface->getFqsen(), $this->implementors)) {
                 return;
             }

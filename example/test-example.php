@@ -25,7 +25,7 @@ include __DIR__ . '/../vendor/autoload.php';
 
 use JuliusHaertl\PHPDocToRst\ApiDocBuilder;
 
-$src = [__DIR__ . '/../tests/test-project'];
+$src = [__DIR__ . '/../src'];
 $dst = __DIR__ . '/../tests/test-project-doc';
 
 $apiDocBuilder = new ApiDocBuilder($src, $dst);

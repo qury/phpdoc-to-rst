@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -26,8 +26,8 @@ namespace JuliusHaertl\PHPDocToRst\Builder;
 
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\Fqsen;
-use phpDocumentor\Reflection\Php\Constant;
 use phpDocumentor\Reflection\Php\Argument;
+use phpDocumentor\Reflection\Php\Constant;
 use phpDocumentor\Reflection\Php\Function_;
 use phpDocumentor\Reflection\Php\Namespace_;
 
@@ -37,14 +37,15 @@ use phpDocumentor\Reflection\Php\Namespace_;
  *
  * @package JuliusHaertl\PHPDocToRst\Builder
  */
-class NamespaceIndexBuilder extends PhpDomainBuilder {
+class NamespaceIndexBuilder extends PhpDomainBuilder
+{
 
-    const RENDER_INDEX_NAMESPACE = 0;
-    const RENDER_INDEX_CLASSES = 1;
-    const RENDER_INDEX_TRAITS = 2;
+    const RENDER_INDEX_NAMESPACE  = 0;
+    const RENDER_INDEX_CLASSES    = 1;
+    const RENDER_INDEX_TRAITS     = 2;
     const RENDER_INDEX_INTERFACES = 3;
-    const RENDER_INDEX_FUNCTIONS = 4;
-    const RENDER_INDEX_CONSTANTS = 5;
+    const RENDER_INDEX_FUNCTIONS  = 4;
+    const RENDER_INDEX_CONSTANTS  = 5;
 
     /** @var Namespace_ */
     private $currentNamespace;
@@ -61,29 +62,34 @@ class NamespaceIndexBuilder extends PhpDomainBuilder {
     /** @var Constant[] */
     private $constants;
 
-    public function __construct($extensions, $namespaces, Namespace_ $current, $functions, $constants) {
+    public function __construct($extensions, $namespaces, Namespace_ $current, $functions, $constants)
+    {
         parent::__construct($extensions);
-        $this->namespaces = $namespaces;
+        $this->namespaces       = $namespaces;
         $this->currentNamespace = $current;
-        $this->functions = $functions;
-        $this->constants = $constants;
+        $this->functions        = $functions;
+        $this->constants        = $constants;
         $this->findChildNamespaces();
     }
 
     /**
      * Find child namespaces for current namespace
      */
-    private function findChildNamespaces() {
+    private function findChildNamespaces()
+    {
         $currentNamespaceFqsen = (string)$this->currentNamespace->getFqsen();
         /** @var Namespace_ $namespace */
         foreach ($this->namespaces as $namespace) {
             // check if not root and doesn't start with current namespace
-            if ($currentNamespaceFqsen !== '\\' && strpos((string)$namespace->getFqsen(), $currentNamespaceFqsen . '\\') !== 0) {
+            if ($currentNamespaceFqsen !== '\\' && strpos((string)$namespace->getFqsen(),
+                    $currentNamespaceFqsen . '\\') !== 0) {
                 continue;
             }
-            if ((string)$namespace->getFqsen() !== $currentNamespaceFqsen && strpos((string)$namespace->getFqsen(), $currentNamespaceFqsen) === 0) {
+            if ((string)$namespace->getFqsen() !== $currentNamespaceFqsen && strpos((string)$namespace->getFqsen(),
+                    $currentNamespaceFqsen) === 0) {
                 // only keep first level children
-                $childrenPath = substr((string)$namespace->getFqsen(), strlen((string)$this->currentNamespace->getFqsen()) + 1);
+                $childrenPath = substr((string)$namespace->getFqsen(),
+                    strlen((string)$this->currentNamespace->getFqsen()) + 1);
                 if (strpos($childrenPath, '\\') === false) {
                     $this->childNamespaces[] = $namespace;
                 }
@@ -91,7 +97,8 @@ class NamespaceIndexBuilder extends PhpDomainBuilder {
         }
     }
 
-    public function render() {
+    public function render()
+    {
         $currentNamespaceFqsen = (string)$this->currentNamespace->getFqsen();
         if ($currentNamespaceFqsen !== '\\') {
             $label = str_replace('\\', '-', $currentNamespaceFqsen);
@@ -116,7 +123,8 @@ class NamespaceIndexBuilder extends PhpDomainBuilder {
         $this->addFunctions();
     }
 
-    protected function addIndex($type) {
+    protected function addIndex($type)
+    {
         if ($this->shouldRenderIndex($type)) {
             $this->addH2($this->getHeaderForType($type));
             $this->addLine('.. toctree::');
@@ -138,80 +146,26 @@ class NamespaceIndexBuilder extends PhpDomainBuilder {
         }
     }
 
-    private function addFunctions() {
-        if (!$this->shouldRenderIndex(self::RENDER_INDEX_FUNCTIONS)) {
-            return;
-        }
-        $this->addH2('Functions');
-        /** @var Function_ $function */
-        foreach ($this->functions as $function) {
-            if (!$this->shouldRenderIndex(self::RENDER_INDEX_FUNCTIONS, $function)) {
-                continue;
-            }
-            $docBlock = $function->getDocBlock();
-            $params = [];
-            if ($docBlock !== null) {
-                /** @var Param $param */
-                foreach ($docBlock->getTagsByName('param') as $param) {
-                    $params[$param->getVariableName()] = $param;
-                }
-            }
-            $args = '';
-            /** @var Argument $argument */
-            foreach ($function->getArguments() as $argument) {
-                // TODO: defaults, types
-                $args .= '$' . $argument->getName() . ', ';
-            }
-            $args = substr($args, 0, -2);
-            $this->beginPhpDomain('function', $function->getName() . '(' . $args . ')');
-            $this->addDocBlockDescription($function);
-            if (!empty($params)) {
-                foreach ($function->getArguments() as $argument) {
-                    if (array_key_exists($argument->getName(), $params)) {
-                        /** @var Param $param */
-                        $param = $params[$argument->getName()];
-                        if ($param !== null) {
-                            $this->addMultiline(':param ' . self::escape($param->getType()) . ' $' . $argument->getName() . ': ' . $param->getDescription(), true);
-                        }
-                    }
-                }
-            }
-            $this->endPhpDomain('function');
-        }
-    }
-
-    private function addElementTocEntry(Fqsen $entry) {
-        $currentNamespaceFqsen = (string)$this->currentNamespace->getFqsen();
-        $subPath = $entry;
-        if ($currentNamespaceFqsen !== '\\' && substr($entry, 0, strlen($currentNamespaceFqsen)) === $currentNamespaceFqsen) {
-            $subPath = substr($entry, strlen($currentNamespaceFqsen));
-        }
-        $path = substr(str_replace('\\', '/', $subPath), 1);
-        $this->addLine($entry->getName() . ' <' . $path . '>');
-    }
-
-    private function shouldRenderIndex($type, $element = null) {
+    private function shouldRenderIndex($type, $element = NULL)
+    {
         foreach ($this->extensions as $extension) {
             if (!$extension->shouldRenderIndex($type, $element)) {
                 return false;
             }
         }
-        if ($element === null) {
+        if ($element === NULL) {
             return (count($this->getElementList($type)) > 0);
         }
         return true;
     }
 
-    private function getHeaderForType($type) {
-        $headers = [self::RENDER_INDEX_NAMESPACE => 'Namespaces', self::RENDER_INDEX_INTERFACES => 'Interfaces', self::RENDER_INDEX_CLASSES => 'Classes', self::RENDER_INDEX_TRAITS => 'Traits', self::RENDER_INDEX_FUNCTIONS => 'Functions', self::RENDER_INDEX_CONSTANTS => 'Constants'];
-        return $headers[$type];
-    }
-
     /**
      * @param int $type
+     *
      * @return array
      */
-    private function getElementList($type) {
+    private function getElementList($type)
+    {
         $elements = [];
         switch ($type) {
             case self::RENDER_INDEX_NAMESPACE:
@@ -234,6 +188,74 @@ class NamespaceIndexBuilder extends PhpDomainBuilder {
                 break;
         }
         return $elements;
+    }
+
+    private function getHeaderForType($type)
+    {
+        $headers = [self::RENDER_INDEX_NAMESPACE  => 'Namespaces',
+                    self::RENDER_INDEX_INTERFACES => 'Interfaces',
+                    self::RENDER_INDEX_CLASSES    => 'Classes',
+                    self::RENDER_INDEX_TRAITS     => 'Traits',
+                    self::RENDER_INDEX_FUNCTIONS  => 'Functions',
+                    self::RENDER_INDEX_CONSTANTS  => 'Constants'
+        ];
+        return $headers[$type];
+    }
+
+    private function addElementTocEntry(Fqsen $entry)
+    {
+        $currentNamespaceFqsen = (string)$this->currentNamespace->getFqsen();
+        $subPath               = $entry;
+        if ($currentNamespaceFqsen !== '\\' && substr($entry, 0,
+                strlen($currentNamespaceFqsen)) === $currentNamespaceFqsen) {
+            $subPath = substr($entry, strlen($currentNamespaceFqsen));
+        }
+        $path = substr(str_replace('\\', '/', $subPath), 1);
+        $this->addLine($entry->getName() . ' <' . $path . '>');
+    }
+
+    private function addFunctions()
+    {
+        if (!$this->shouldRenderIndex(self::RENDER_INDEX_FUNCTIONS)) {
+            return;
+        }
+        $this->addH2('Functions');
+        /** @var Function_ $function */
+        foreach ($this->functions as $function) {
+            if (!$this->shouldRenderIndex(self::RENDER_INDEX_FUNCTIONS, $function)) {
+                continue;
+            }
+            $docBlock = $function->getDocBlock();
+            $params   = [];
+            if ($docBlock !== NULL) {
+                /** @var Param $param */
+                foreach ($docBlock->getTagsByName('param') as $param) {
+                    $params[$param->getVariableName()] = $param;
+                }
+            }
+            $args = '';
+            /** @var Argument $argument */
+            foreach ($function->getArguments() as $argument) {
+                // TODO: defaults, types
+                $args .= '$' . $argument->getName() . ', ';
+            }
+            $args = substr($args, 0, -2);
+            $this->beginPhpDomain('function', $function->getName() . '(' . $args . ')');
+            $this->addDocBlockDescription($function);
+            if (!empty($params)) {
+                foreach ($function->getArguments() as $argument) {
+                    if (array_key_exists($argument->getName(), $params)) {
+                        /** @var Param $param */
+                        $param = $params[$argument->getName()];
+                        if ($param !== NULL) {
+                            $this->addMultiline(':param ' . self::escape($param->getType()) . ' $' . $argument->getName() . ': ' . $param->getDescription(),
+                                true);
+                        }
+                    }
+                }
+            }
+            $this->endPhpDomain('function');
+        }
     }
 
 }

@@ -8,7 +8,7 @@
         "symfony/console": "^4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8|^7.0"
+        "phpunit/phpunit": "*"
     },
     "license": "AGPL-3.0-or-later",
     "authors": [
@@ -36,10 +36,5 @@
             "JuliusHaertl\\PHPDocToRst\\Test\\": "tests/"
         }
     },
-    "config": {
-        "bin-dir": "bin/"
-    },
-    "bin": [
-        "bin/phpdoc-to-rst"
-    ]
+    "bin": ["bin/phpdoc-to-rst"]
 }

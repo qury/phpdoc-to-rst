@@ -29,7 +29,8 @@ Classes
 .. toctree::
 	:maxdepth: 1
 	
-	WriteException <WriteException>
 	GenerateDocumentationCommand <GenerateDocumentationCommand>
+	WriteException <WriteException>
+	ApiDocBuilder <ApiDocBuilder>
 
 

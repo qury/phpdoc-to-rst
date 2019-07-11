@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -23,9 +23,12 @@
 
 namespace JuliusHaertl\PHPDocToRst;
 
+use Exception;
+
 /**
  * An exception for writing failure of files/directories in the build process
  */
-class WriteException extends \Exception {
+class WriteException extends Exception
+{
 
 }

@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -32,16 +32,19 @@ use phpDocumentor\Reflection\Php\Namespace_;
  *
  * @package JuliusHaertl\PHPDocToRst\Builder
  */
-class MainIndexBuilder extends RstBuilder {
+class MainIndexBuilder extends RstBuilder
+{
 
     /** @var Namespace_[] */
     private $namespaces;
 
-    public function __construct($namespaces) {
+    public function __construct($namespaces)
+    {
         $this->namespaces = $namespaces;
     }
 
-    public function render() {
+    public function render()
+    {
         $this->addLine('.. _namespaces:')->addLine();
         $this->addH1(RstBuilder::escape('Namespaces'));
 
@@ -50,8 +53,8 @@ class MainIndexBuilder extends RstBuilder {
         $this->addLine(':maxdepth: 1')->addLine();
         foreach ($this->namespaces as $namespace) {
             $namespaceString = (string)$namespace->getFqsen();
-            $subPath = $namespaceString;
-            $path = substr(str_replace("\\", "/", $subPath), 1) . '/index';
+            $subPath         = $namespaceString;
+            $path            = substr(str_replace("\\", "/", $subPath), 1) . '/index';
             if ($namespaceString === '\\') {
                 $path = 'index';
             }

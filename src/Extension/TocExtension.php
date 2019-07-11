@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -24,9 +24,7 @@
 namespace JuliusHaertl\PHPDocToRst\Extension;
 
 use JuliusHaertl\PHPDocToRst\Builder\FileBuilder;
-use JuliusHaertl\PHPDocToRst\Builder\InterfaceFileBuilder;
 use JuliusHaertl\PHPDocToRst\Builder\PhpDomainBuilder;
-use JuliusHaertl\PHPDocToRst\Builder\RstBuilder;
 use phpDocumentor\Reflection\Php\Argument;
 use phpDocumentor\Reflection\Php\Class_;
 use phpDocumentor\Reflection\Php\Interface_;
@@ -36,14 +34,15 @@ use PhpParser\Builder\Trait_;
  * This extension will render a list of methods  for easy access
  * at the beginning of classes, interfaces and traits
  */
-
-class TocExtension extends Extension {
+class TocExtension extends Extension
+{
 
     /**
-     * @param string $type
+     * @param string      $type
      * @param FileBuilder $builder
      */
-    public function render($type, &$builder, $element) {
+    public function render($type, &$builder, $element)
+    {
         if ($type === PhpDomainBuilder::SECTION_AFTER_INTRODUCTION) {
             if ($element instanceof Class_ || $element instanceof Interface_ || $element instanceof Trait_) {
                 $builder->addLine();
@@ -52,7 +51,7 @@ class TocExtension extends Extension {
                 /** @var Interface_ $interface */
                 $interface = $builder->getElement();
 
-                if(count($interface->getMethods()) > 0) {
+                if (count($interface->getMethods()) > 0) {
                     $builder->addH3('Methods');
                     foreach ($interface->getMethods() as $method) {
                         $args = '';
@@ -61,7 +60,7 @@ class TocExtension extends Extension {
                             // TODO: defaults, types
                             $args .= '$' . $argument->getName() . ', ';
                         }
-                        $args = substr($args, 0, -2);
+                        $args      = substr($args, 0, -2);
                         $modifiers = $method->getVisibility();
                         $modifiers .= $method->isAbstract() ? ' abstract' : '';
                         $modifiers .= $method->isFinal() ? ' final' : '';

@@ -2,9 +2,9 @@
 /**
  * @copyright Copyright (c) 2017 Julius Härtl <jus@bitgrid.net>
  *
- * @author Julius Härtl <jus@bitgrid.net>
+ * @author    Julius Härtl <jus@bitgrid.net>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license   GNU AGPL version 3 or any later version
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as
@@ -27,9 +27,11 @@ use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\Php\Argument;
 use phpDocumentor\Reflection\Php\Class_;
 
-class ClassFileBuilder extends FileBuilder {
+class ClassFileBuilder extends FileBuilder
+{
 
-    protected function render() {
+    protected function render()
+    {
 
         /** @var Class_ $class */
         $class = $this->element;
@@ -57,7 +59,8 @@ class ClassFileBuilder extends FileBuilder {
     /**
      * @param Class_ $element
      */
-    protected function addImplementedInterfaces($element) {
+    protected function addImplementedInterfaces($element)
+    {
         $implementedInterfaces = '';
         foreach ($element->getInterfaces() as $int) {
             $implementedInterfaces .= $this->getLink('interface', $int) . ' ';
