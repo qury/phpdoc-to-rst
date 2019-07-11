@@ -504,7 +504,12 @@ class PhpDomainBuilder extends RstBuilder
                         $typString = substr($typString, 1);
                     }
                     $paramItem = '* ';
-                    $paramItem .= '**$' . $argument->getName() . '** ';
+                    $paramItem .= '**';
+                    if($argument->isVariadic())
+                    {
+                        $paramItem .= '...';
+                    }
+                    $paramItem .= '$' . $argument->getName() . '** ';
                     if ($typString !== NULL) {
                         $paramItem .= '(' . self::typesToRst($typString) . ') ';
                     }
