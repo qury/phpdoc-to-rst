@@ -14,7 +14,7 @@ foreach(['vendor',null] as $vendor_dir)
     }
 
     $dir = [__DIR__];
-    for($a=0;$a=3;$a++)
+    for($a=0;$a<=3;$a++)
     {
         $dir[]= '..';
         $file = implode(DIRECTORY_SEPARATOR, $dir);
