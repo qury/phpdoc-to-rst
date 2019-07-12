@@ -8,7 +8,7 @@ if (!ini_get('date.timezone')) {
 foreach([null,'vendor'] as $vendor_dir)
 {
     $dir = [__DIR__];
-    for($a=0;$a=3;$a++)
+    for($a=0;$a<=3;$a++)
     {
         $dir[]= '..';
         $file = implode(DIRECTORY_SEPARATOR, $dir);
@@ -19,7 +19,7 @@ foreach([null,'vendor'] as $vendor_dir)
 
         $file.= DIRECTORY_SEPARATOR . 'autoload.php';
 
-        echo $file;
+        echo $file .PHP_EOL;
 
         if (file_exists($file)) {
             define('PHPUNIT_COMPOSER_INSTALL', $file);
