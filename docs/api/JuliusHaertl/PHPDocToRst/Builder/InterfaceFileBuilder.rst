@@ -14,7 +14,7 @@ InterfaceFileBuilder
 
 
 	:Source:
-		`/Builder/InterfaceFileBuilder.php#25 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/InterfaceFileBuilder.php#L25>`_
+		`../../src/Builder/InterfaceFileBuilder.php#25 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/InterfaceFileBuilder.php#L25>`_
 	
 	:Parent:
 		:php:class:`JuliusHaertl\\PHPDocToRst\\Builder\\FileBuilder`
@@ -38,7 +38,7 @@ Methods
 	.. php:method:: protected render()
 	
 		:Source:
-			`/Builder/InterfaceFileBuilder.php#27 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/InterfaceFileBuilder.php#L27>`_
+			`../../src/Builder/InterfaceFileBuilder.php#27 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/InterfaceFileBuilder.php#L27>`_
 		
 		
 	

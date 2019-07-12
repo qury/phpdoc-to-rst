@@ -8,9 +8,8 @@ use JuliusHaertl\PHPDocToRst\Extension\InterfaceImplementors;
 use JuliusHaertl\PHPDocToRst\Extension\NoPrivateExtension;
 use JuliusHaertl\PHPDocToRst\Extension\PublicOnlyExtension;
 use JuliusHaertl\PHPDocToRst\Extension\TocExtension;
-use PHPUnit_Framework_TestCase;
 
-class DocGenerationTest extends PHPUnit_Framework_TestCase
+class DocGenerationTest extends \PHPUnit_Framework_TestCase
 {
     public function testBuildDocumentation()
     {

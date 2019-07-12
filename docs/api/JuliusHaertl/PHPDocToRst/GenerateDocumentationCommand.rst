@@ -19,7 +19,7 @@ GenerateDocumentationCommand
 		
 	
 	:Source:
-		`/GenerateDocumentationCommand.php#38 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//GenerateDocumentationCommand.php#L38>`_
+		`../../src/GenerateDocumentationCommand.php#38 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/GenerateDocumentationCommand.php#L38>`_
 	
 	:Parent:
 		:php:class:`Symfony\\Component\\Console\\Command\\Command`
@@ -44,7 +44,7 @@ Methods
 	.. php:method:: protected configure()
 	
 		:Source:
-			`/GenerateDocumentationCommand.php#40 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//GenerateDocumentationCommand.php#L40>`_
+			`../../src/GenerateDocumentationCommand.php#40 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/GenerateDocumentationCommand.php#L40>`_
 		
 		
 	
@@ -55,7 +55,7 @@ Methods
 	.. php:method:: protected execute( $input, $output)
 	
 		:Source:
-			`/GenerateDocumentationCommand.php#53 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//GenerateDocumentationCommand.php#L53>`_
+			`../../src/GenerateDocumentationCommand.php#53 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/GenerateDocumentationCommand.php#L53>`_
 		
 		
 	

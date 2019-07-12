@@ -147,7 +147,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'phpdoc-to-rst.tex', 'phpdoc-to-rst Documentation',
-     'Julius Härtl', 'manual'),
+     'Julius Haertl', 'manual'),
 ]
 
 

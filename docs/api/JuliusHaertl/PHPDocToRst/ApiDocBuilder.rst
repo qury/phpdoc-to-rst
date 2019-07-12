@@ -24,7 +24,7 @@ ApiDocBuilder
 		
 	
 	:Source:
-		`/ApiDocBuilder.php#49 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L49>`_
+		`../../src/ApiDocBuilder.php#49 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/ApiDocBuilder.php#L49>`_
 	
 
 
@@ -55,94 +55,6 @@ Methods
 Properties
 ----------
 
-.. php:attr:: private static project
-
-	:Source:
-		`/ApiDocBuilder.php#52 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L52>`_
-	
-	:Type: :any:`\\phpDocumentor\\Reflection\\Php\\Project <phpDocumentor\\Reflection\\Php\\Project>` 
-
-
-.. php:attr:: private static docFiles
-
-	:Source:
-		`/ApiDocBuilder.php#55 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L55>`_
-	
-	:Type: array 
-
-
-.. php:attr:: private static constants
-
-	:Source:
-		`/ApiDocBuilder.php#58 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L58>`_
-	
-	:Type: array 
-
-
-.. php:attr:: private static functions
-
-	:Source:
-		`/ApiDocBuilder.php#61 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L61>`_
-	
-	:Type: array 
-
-
-.. php:attr:: private static extensions
-
-	:Source:
-		`/ApiDocBuilder.php#64 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L64>`_
-	
-	:Type: :any:`\\JuliusHaertl\\PHPDocToRst\\Extension\\Extension\[\] <JuliusHaertl\\PHPDocToRst\\Extension\\Extension>` 
-
-
-.. php:attr:: private static extensionNames
-
-	:Source:
-		`/ApiDocBuilder.php#67 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L67>`_
-	
-	:Type: string[] 
-
-
-.. php:attr:: private static extensionArguments
-
-	:Source:
-		`/ApiDocBuilder.php#70 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L70>`_
-	
-	:Type: array[] 
-
-
-.. php:attr:: private static srcDir
-
-	:Source:
-		`/ApiDocBuilder.php#73 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L73>`_
-	
-	:Type: string[] 
-
-
-.. php:attr:: private static dstDir
-
-	:Source:
-		`/ApiDocBuilder.php#76 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L76>`_
-	
-	:Type: string 
-
-
-.. php:attr:: private static verboseOutput
-
-	:Source:
-		`/ApiDocBuilder.php#79 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L79>`_
-	
-	:Type: bool 
-
-
-.. php:attr:: private static debugOutput
-
-	:Source:
-		`/ApiDocBuilder.php#82 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L82>`_
-	
-	:Type: bool 
-
-
 Methods
 -------
 
@@ -156,7 +68,7 @@ Methods
 			
 		
 		:Source:
-			`/ApiDocBuilder.php#90 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L90>`_
+			`../../src/ApiDocBuilder.php#90 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/ApiDocBuilder.php#L90>`_
 		
 		
 		:Parameters:
@@ -177,21 +89,9 @@ Methods
 			
 		
 		:Source:
-			`/ApiDocBuilder.php#99 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L99>`_
+			`../../src/ApiDocBuilder.php#99 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/ApiDocBuilder.php#L99>`_
 		
 		
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private setupReflection()
-	
-		:Source:
-			`/ApiDocBuilder.php#112 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L112>`_
-		
-		
-		:Throws: :any:`\\Exception <Exception>` 
 	
 	
 
@@ -205,40 +105,12 @@ Methods
 			
 		
 		:Source:
-			`/ApiDocBuilder.php#166 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L166>`_
+			`../../src/ApiDocBuilder.php#166 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/ApiDocBuilder.php#L166>`_
 		
 		
 		:Parameters:
 			* **$message** (string)  Message to be logged
 
-		
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private createDirectoryStructure()
-	
-		.. rst-class:: phpdoc-description
-		
-			| Create directory structure for the rst output\.
-			
-		
-		:Source:
-			`/ApiDocBuilder.php#178 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L178>`_
-		
-		
-		:Throws: :any:`\\JuliusHaertl\\PHPDocToRst\\WriteException <JuliusHaertl\\PHPDocToRst\\WriteException>` 
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private parseFiles()
-	
-		:Source:
-			`/ApiDocBuilder.php#191 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L191>`_
-		
 		
 	
 	
@@ -253,23 +125,12 @@ Methods
 			
 		
 		:Source:
-			`/ApiDocBuilder.php#218 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L218>`_
+			`../../src/ApiDocBuilder.php#218 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/ApiDocBuilder.php#L218>`_
 		
 		
 		:Parameters:
 			* **$message** (string)  Message to be logged
 
-		
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private buildIndexes()
-	
-		:Source:
-			`/ApiDocBuilder.php#225 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L225>`_
-		
 		
 	
 	
@@ -284,7 +145,7 @@ Methods
 			
 		
 		:Source:
-			`/ApiDocBuilder.php#263 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L263>`_
+			`../../src/ApiDocBuilder.php#263 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/ApiDocBuilder.php#L263>`_
 		
 		
 		:Parameters:
@@ -304,7 +165,7 @@ Methods
 			
 		
 		:Source:
-			`/ApiDocBuilder.php#273 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L273>`_
+			`../../src/ApiDocBuilder.php#273 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/ApiDocBuilder.php#L273>`_
 		
 		
 		:Parameters:
@@ -319,7 +180,7 @@ Methods
 	.. php:method:: public addExtension( $class, $arguments=\[\])
 	
 		:Source:
-			`/ApiDocBuilder.php#283 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L283>`_
+			`../../src/ApiDocBuilder.php#283 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/ApiDocBuilder.php#L283>`_
 		
 		
 		:Parameters:
@@ -327,81 +188,6 @@ Methods
 
 		
 		:Throws: :any:`\\Exception <Exception>` 
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private parseInterfaces( $file)
-	
-		:Source:
-			`/ApiDocBuilder.php#292 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L292>`_
-		
-		
-		:Parameters:
-			* **$file** (:any:`phpDocumentor\\Reflection\\Php\\File <phpDocumentor\\Reflection\\Php\\File>`)  
-
-		
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private parseClasses( $file)
-	
-		:Source:
-			`/ApiDocBuilder.php#312 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L312>`_
-		
-		
-		:Parameters:
-			* **$file** (:any:`phpDocumentor\\Reflection\\Php\\File <phpDocumentor\\Reflection\\Php\\File>`)  
-
-		
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private parseTraits( $file)
-	
-		:Source:
-			`/ApiDocBuilder.php#332 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L332>`_
-		
-		
-		:Parameters:
-			* **$file** (:any:`phpDocumentor\\Reflection\\Php\\File <phpDocumentor\\Reflection\\Php\\File>`)  
-
-		
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private parseFunctions( $file)
-	
-		:Source:
-			`/ApiDocBuilder.php#352 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L352>`_
-		
-		
-		:Parameters:
-			* **$file** (:any:`phpDocumentor\\Reflection\\Php\\File <phpDocumentor\\Reflection\\Php\\File>`)  
-
-		
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private parseConstants( $file)
-	
-		:Source:
-			`/ApiDocBuilder.php#368 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//ApiDocBuilder.php#L368>`_
-		
-		
-		:Parameters:
-			* **$file** (:any:`phpDocumentor\\Reflection\\Php\\File <phpDocumentor\\Reflection\\Php\\File>`)  
-
-		
 	
 	
 

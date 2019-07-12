@@ -19,7 +19,7 @@ AddFullElementNameExtension
 		
 	
 	:Source:
-		`/Extension/AddFullElementNameExtension.php#31 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Extension/AddFullElementNameExtension.php#L31>`_
+		`../../src/Extension/AddFullElementNameExtension.php#31 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Extension/AddFullElementNameExtension.php#L31>`_
 	
 	:Parent:
 		:php:class:`JuliusHaertl\\PHPDocToRst\\Extension\\Extension`
@@ -43,7 +43,7 @@ Methods
 	.. php:method:: public render( $type, &$builder, $element)
 	
 		:Source:
-			`/Extension/AddFullElementNameExtension.php#37 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Extension/AddFullElementNameExtension.php#L37>`_
+			`../../src/Extension/AddFullElementNameExtension.php#37 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Extension/AddFullElementNameExtension.php#L37>`_
 		
 		
 		:Parameters:

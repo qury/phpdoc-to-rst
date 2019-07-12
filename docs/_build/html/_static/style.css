@@ -1,0 +1,9 @@
+/* API doc styles */
+
+.method .descclassname,
+.attr .descclassname {
+    display: none;
+}
+.attr .descname:before {
+    content: '$';
+}
