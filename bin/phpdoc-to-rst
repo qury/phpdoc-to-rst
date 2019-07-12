@@ -5,8 +5,14 @@ if (!ini_get('date.timezone')) {
     ini_set('date.timezone', 'UTC');
 }
 
-foreach([null,'vendor'] as $vendor_dir)
+foreach(['vendor',null] as $vendor_dir)
 {
+
+    if(defined('PHPUNIT_COMPOSER_INSTALL'))
+    {
+        continue;
+    }
+
     $dir = [__DIR__];
     for($a=0;$a<=3;$a++)
     {
