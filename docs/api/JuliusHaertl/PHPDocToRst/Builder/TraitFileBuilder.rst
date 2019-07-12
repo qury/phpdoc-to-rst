@@ -14,7 +14,7 @@ TraitFileBuilder
 
 
 	:Source:
-		`/Builder/TraitFileBuilder.php#25 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/TraitFileBuilder.php#L25>`_
+		`../../src/Builder/TraitFileBuilder.php#25 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/TraitFileBuilder.php#L25>`_
 	
 	:Parent:
 		:php:class:`JuliusHaertl\\PHPDocToRst\\Builder\\FileBuilder`
@@ -38,7 +38,7 @@ Methods
 	.. php:method:: protected render()
 	
 		:Source:
-			`/Builder/TraitFileBuilder.php#27 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/TraitFileBuilder.php#L27>`_
+			`../../src/Builder/TraitFileBuilder.php#27 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/TraitFileBuilder.php#L27>`_
 		
 		
 	

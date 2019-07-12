@@ -19,7 +19,7 @@ RstBuilder
 		
 	
 	:Source:
-		`/Builder/RstBuilder.php#26 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L26>`_
+		`../../src/Builder/RstBuilder.php#26 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L26>`_
 	
 
 
@@ -49,16 +49,9 @@ Properties
 .. php:attr:: protected static content
 
 	:Source:
-		`/Builder/RstBuilder.php#29 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L29>`_
+		`../../src/Builder/RstBuilder.php#29 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L29>`_
 	
 	:Type: string 
-
-
-.. php:attr:: private static indentLevel
-
-	:Source:
-		`/Builder/RstBuilder.php#30 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L30>`_
-	
 
 
 Methods
@@ -69,7 +62,7 @@ Methods
 	.. php:method:: public getContent()
 	
 		:Source:
-			`/Builder/RstBuilder.php#32 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L32>`_
+			`../../src/Builder/RstBuilder.php#32 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L32>`_
 		
 		
 	
@@ -80,7 +73,7 @@ Methods
 	.. php:method:: public addFieldList( $key, $value)
 	
 		:Source:
-			`/Builder/RstBuilder.php#37 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L37>`_
+			`../../src/Builder/RstBuilder.php#37 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L37>`_
 		
 		
 	
@@ -91,7 +84,7 @@ Methods
 	.. php:method:: public addLine( $text="")
 	
 		:Source:
-			`/Builder/RstBuilder.php#45 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L45>`_
+			`../../src/Builder/RstBuilder.php#45 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L45>`_
 		
 		
 	
@@ -102,7 +95,7 @@ Methods
 	.. php:method:: public add( $text)
 	
 		:Source:
-			`/Builder/RstBuilder.php#52 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L52>`_
+			`../../src/Builder/RstBuilder.php#52 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L52>`_
 		
 		
 	
@@ -113,7 +106,7 @@ Methods
 	.. php:method:: public static escape( $text)
 	
 		:Source:
-			`/Builder/RstBuilder.php#59 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L59>`_
+			`../../src/Builder/RstBuilder.php#59 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L59>`_
 		
 		
 	
@@ -124,7 +117,7 @@ Methods
 	.. php:method:: public unindent()
 	
 		:Source:
-			`/Builder/RstBuilder.php#67 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L67>`_
+			`../../src/Builder/RstBuilder.php#67 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L67>`_
 		
 		
 	
@@ -135,7 +128,7 @@ Methods
 	.. php:method:: public addMultiline( $text="", $blockIndent=false)
 	
 		:Source:
-			`/Builder/RstBuilder.php#75 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L75>`_
+			`../../src/Builder/RstBuilder.php#75 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L75>`_
 		
 		
 	
@@ -146,7 +139,7 @@ Methods
 	.. php:method:: public indent()
 	
 		:Source:
-			`/Builder/RstBuilder.php#92 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L92>`_
+			`../../src/Builder/RstBuilder.php#92 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L92>`_
 		
 		
 	
@@ -157,7 +150,7 @@ Methods
 	.. php:method:: public addH1( $text)
 	
 		:Source:
-			`/Builder/RstBuilder.php#104 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L104>`_
+			`../../src/Builder/RstBuilder.php#104 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L104>`_
 		
 		
 		:Parameters:
@@ -173,7 +166,7 @@ Methods
 	.. php:method:: public addH2( $text)
 	
 		:Source:
-			`/Builder/RstBuilder.php#112 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L112>`_
+			`../../src/Builder/RstBuilder.php#112 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L112>`_
 		
 		
 	
@@ -184,7 +177,7 @@ Methods
 	.. php:method:: public addH3( $text)
 	
 		:Source:
-			`/Builder/RstBuilder.php#120 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L120>`_
+			`../../src/Builder/RstBuilder.php#120 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L120>`_
 		
 		
 	
@@ -195,7 +188,7 @@ Methods
 	.. php:method:: public addMultilineWithoutRendering( $text)
 	
 		:Source:
-			`/Builder/RstBuilder.php#128 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/RstBuilder.php#L128>`_
+			`../../src/Builder/RstBuilder.php#128 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/RstBuilder.php#L128>`_
 		
 		
 	

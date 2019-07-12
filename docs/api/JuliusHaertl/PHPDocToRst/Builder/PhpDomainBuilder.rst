@@ -19,7 +19,7 @@ PhpDomainBuilder
 		
 	
 	:Source:
-		`/Builder/PhpDomainBuilder.php#44 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L44>`_
+		`../../src/Builder/PhpDomainBuilder.php#44 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L44>`_
 	
 	:Parent:
 		:php:class:`JuliusHaertl\\PHPDocToRst\\Builder\\RstBuilder`
@@ -66,28 +66,28 @@ Constants
 .. php:const:: SECTION_BEFORE_DESCRIPTION = self::class \. ::SECTION\_BEFORE\_DESCRIPTION
 
 	:Source:
-		`/Builder/PhpDomainBuilder.php#46 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L46>`_
+		`../../src/Builder/PhpDomainBuilder.php#46 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L46>`_
 	
 
 
 .. php:const:: SECTION_AFTER_DESCRIPTION = self::class \. ::SECTION\_AFTER\_DESCRIPTION
 
 	:Source:
-		`/Builder/PhpDomainBuilder.php#47 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L47>`_
+		`../../src/Builder/PhpDomainBuilder.php#47 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L47>`_
 	
 
 
 .. php:const:: SECTION_AFTER_TITLE = self::class \. ::SECTION\_AFTER\_TITLE
 
 	:Source:
-		`/Builder/PhpDomainBuilder.php#48 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L48>`_
+		`../../src/Builder/PhpDomainBuilder.php#48 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L48>`_
 	
 
 
 .. php:const:: SECTION_AFTER_INTRODUCTION = self::class \. ::SECTION\_AFTER\_INTRODUCTION
 
 	:Source:
-		`/Builder/PhpDomainBuilder.php#49 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L49>`_
+		`../../src/Builder/PhpDomainBuilder.php#49 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L49>`_
 	
 
 
@@ -99,7 +99,7 @@ Methods
 	.. php:method:: public __construct( $extensions)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#55 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L55>`_
+			`../../src/Builder/PhpDomainBuilder.php#55 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L55>`_
 		
 		
 	
@@ -115,7 +115,7 @@ Methods
 			
 		
 		:Source:
-			`/Builder/PhpDomainBuilder.php#67 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L67>`_
+			`../../src/Builder/PhpDomainBuilder.php#67 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L67>`_
 		
 		
 		:Parameters:
@@ -135,7 +135,7 @@ Methods
 			
 		
 		:Source:
-			`/Builder/PhpDomainBuilder.php#94 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L94>`_
+			`../../src/Builder/PhpDomainBuilder.php#94 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L94>`_
 		
 		
 		:Parameters:
@@ -151,7 +151,7 @@ Methods
 	.. php:method:: public beginPhpDomain( $type, $name, $indent=true)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#105 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L105>`_
+			`../../src/Builder/PhpDomainBuilder.php#105 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L105>`_
 		
 		
 		:Parameters:
@@ -163,23 +163,12 @@ Methods
 	
 	
 
-.. rst-class:: private
-
-	.. php:method:: private getTypeForClass( $element)
-	
-		:Source:
-			`/Builder/PhpDomainBuilder.php#114 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L114>`_
-		
-		
-	
-	
-
 .. rst-class:: protected
 
 	.. php:method:: protected addAfterIntroduction( $element)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#132 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L132>`_
+			`../../src/Builder/PhpDomainBuilder.php#132 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L132>`_
 		
 		
 	
@@ -190,7 +179,7 @@ Methods
 	.. php:method:: protected addConstants( $constants)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#137 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L137>`_
+			`../../src/Builder/PhpDomainBuilder.php#137 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L137>`_
 		
 		
 	
@@ -201,7 +190,7 @@ Methods
 	.. php:method:: public shouldRenderElement( $element)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#154 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L154>`_
+			`../../src/Builder/PhpDomainBuilder.php#154 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L154>`_
 		
 		
 		:Parameters:
@@ -212,27 +201,12 @@ Methods
 	
 	
 
-.. rst-class:: private
-
-	.. php:method:: private addConstant( $constant)
-	
-		:Source:
-			`/Builder/PhpDomainBuilder.php#169 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L169>`_
-		
-		
-		:Parameters:
-			* **$constant** (:any:`phpDocumentor\\Reflection\\Php\\Constant <phpDocumentor\\Reflection\\Php\\Constant>`)  
-
-		
-	
-	
-
 .. rst-class:: public
 
 	.. php:method:: public addDocBlockDescription( $element)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#187 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L187>`_
+			`../../src/Builder/PhpDomainBuilder.php#187 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L187>`_
 		
 		
 		:Parameters:
@@ -248,7 +222,7 @@ Methods
 	.. php:method:: protected addDocblockTag( $tagName, $docBlock)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#212 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L212>`_
+			`../../src/Builder/PhpDomainBuilder.php#212 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L212>`_
 		
 		
 		:Parameters:
@@ -264,7 +238,7 @@ Methods
 	.. php:method:: public static typesToRst( $typesString)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#281 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L281>`_
+			`../../src/Builder/PhpDomainBuilder.php#281 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L281>`_
 		
 		
 		:Parameters:
@@ -280,7 +254,7 @@ Methods
 	.. php:method:: public endPhpDomain( $type="")
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#327 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L327>`_
+			`../../src/Builder/PhpDomainBuilder.php#327 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L327>`_
 		
 		
 		:Parameters:
@@ -296,26 +270,11 @@ Methods
 	.. php:method:: protected addProperties( $properties)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#336 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L336>`_
+			`../../src/Builder/PhpDomainBuilder.php#336 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L336>`_
 		
 		
 		:Parameters:
 			* **$properties** (:any:`phpDocumentor\\Reflection\\Php\\Property\[\] <phpDocumentor\\Reflection\\Php\\Property>`)  
-
-		
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private addProperty( $property)
-	
-		:Source:
-			`/Builder/PhpDomainBuilder.php#351 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L351>`_
-		
-		
-		:Parameters:
-			* **$property** (:any:`phpDocumentor\\Reflection\\Php\\Property <phpDocumentor\\Reflection\\Php\\Property>`)  
 
 		
 	
@@ -326,7 +285,7 @@ Methods
 	.. php:method:: protected addParent( $element)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#368 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L368>`_
+			`../../src/Builder/PhpDomainBuilder.php#368 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L368>`_
 		
 		
 		:Parameters:
@@ -341,7 +300,7 @@ Methods
 	.. php:method:: public static getLink( $type, $fqsen, $description="")
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#390 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L390>`_
+			`../../src/Builder/PhpDomainBuilder.php#390 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L390>`_
 		
 		
 		:Parameters:
@@ -358,7 +317,7 @@ Methods
 	.. php:method:: protected addUsedTraits( $element)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#403 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L403>`_
+			`../../src/Builder/PhpDomainBuilder.php#403 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L403>`_
 		
 		
 		:Parameters:
@@ -373,74 +332,13 @@ Methods
 	.. php:method:: protected addMethods( $methods)
 	
 		:Source:
-			`/Builder/PhpDomainBuilder.php#417 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L417>`_
+			`../../src/Builder/PhpDomainBuilder.php#417 <https://github.com/abbadon1334/phpdoc-to-rst/blob/master/../../src/Builder/PhpDomainBuilder.php#L417>`_
 		
 		
 		:Parameters:
 			* **$methods**  
 
 		
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private addMethod( $method)
-	
-		:Source:
-			`/Builder/PhpDomainBuilder.php#427 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L427>`_
-		
-		
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private processMethodArgumentDocs( $method, $params)
-	
-		:Source:
-			`/Builder/PhpDomainBuilder.php#474 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L474>`_
-		
-		
-		:Parameters:
-			* **$method** (:any:`phpDocumentor\\Reflection\\Php\\Method <phpDocumentor\\Reflection\\Php\\Method>`)  
-			* **$params** (array)  
-
-		
-		:Returns: string 
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private processMethodArgumentTypes( $method)
-	
-		:Source:
-			`/Builder/PhpDomainBuilder.php#511 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L511>`_
-		
-		
-		:Parameters:
-			* **$method** (:any:`phpDocumentor\\Reflection\\Php\\Method <phpDocumentor\\Reflection\\Php\\Method>`)  
-
-		
-		:Returns: string 
-	
-	
-
-.. rst-class:: private
-
-	.. php:method:: private processMethodArgumentType( $argument, $args)
-	
-		:Source:
-			`/Builder/PhpDomainBuilder.php#528 <http://github.com/abbadon1334/phpdoc-to-rst//blob/master//Builder/PhpDomainBuilder.php#L528>`_
-		
-		
-		:Parameters:
-			* **$argument** (:any:`phpDocumentor\\Reflection\\Php\\Argument <phpDocumentor\\Reflection\\Php\\Argument>`)  
-			* **$args** (string)  
-
-		
-		:Returns: string 
 	
 	
 
