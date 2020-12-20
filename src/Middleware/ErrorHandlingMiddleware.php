@@ -48,7 +48,7 @@ final class ErrorHandlingMiddleware implements Middleware
      *
      * @return object
      */
-    public function execute(Command $command, callable $next) : object
+    public function execute(Command $command, callable $next): object
     {
         $filename = $command->getFile()->path();
         $this->apiDocBuilder->debug('Starting to parse file: '.$filename);
@@ -57,13 +57,11 @@ final class ErrorHandlingMiddleware implements Middleware
             return $next($command);
         } catch (Exception $e) {
             $this->apiDocBuilder->log('Unable to parse file "'.$filename.'", '.$e->getMessage());
-			//Must Return empty file object
-			return new FileElement(
-				$command->getFile()->md5(),
-				$filename
-			);
+            //Must Return empty file object
+            return new FileElement(
+                $command->getFile()->md5(),
+                $filename
+            );
         }
-
-
     }
 }

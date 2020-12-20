@@ -131,20 +131,20 @@ final class ApiDocBuilder
         }
 
         $projectFactory = new ProjectFactory([
-			new Factory\Argument(new PrettyPrinter()),
-			new Factory\Class_(),
-			new Factory\Define(new PrettyPrinter()),
-			new Factory\GlobalConstant(new PrettyPrinter()),
-			new Factory\ClassConstant(new PrettyPrinter()),
-			new Factory\DocBlock(DocBlockFactory::createInstance()),
-			new Factory\File(NodesFactory::createInstance(), [
-				new ErrorHandlingMiddleware($this),
-			]),
-			new Factory\Function_(),
-			new Factory\Interface_(),
-			new Factory\Method(),
-			new Factory\Property(new PrettyPrinter()),
-			new Factory\Trait_(),
+            new Factory\Argument(new PrettyPrinter()),
+            new Factory\Class_(),
+            new Factory\Define(new PrettyPrinter()),
+            new Factory\GlobalConstant(new PrettyPrinter()),
+            new Factory\ClassConstant(new PrettyPrinter()),
+            new Factory\DocBlock(DocBlockFactory::createInstance()),
+            new Factory\File(NodesFactory::createInstance(), [
+                new ErrorHandlingMiddleware($this),
+            ]),
+            new Factory\Function_(),
+            new Factory\Interface_(),
+            new Factory\Method(),
+            new Factory\Property(new PrettyPrinter()),
+            new Factory\Trait_(),
         ]);
         $this->project = $projectFactory->create('MyProject', $interfaceList);
         $this->log('Successfully parsed files.');
@@ -351,7 +351,7 @@ final class ApiDocBuilder
     /**
      * @param \phpDocumentor\Reflection\Php\File $file
      */
-    private function parseFunctions(\phpDocumentor\Reflection\Php\File $file) :void
+    private function parseFunctions(\phpDocumentor\Reflection\Php\File $file): void
     {
         // build array of functions per namespace
         foreach ($file->getFunctions() as $function) {

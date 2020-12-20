@@ -231,39 +231,51 @@ class PhpDomainBuilder extends RstBuilder
             case 'return':
                 /** @var Return_ $return */
                 $return = $tags[0];
-                $this->addMultiline(':Returns: '.self::typesToRst($return->getType()).' '.RstBuilder::escape($return->getDescription()),
-                    true);
+                $this->addMultiline(
+                    ':Returns: '.self::typesToRst($return->getType()).' '.RstBuilder::escape($return->getDescription()),
+                    true
+                );
                 break;
             case 'var':
                 /** @var DocBlock\Tags\Var_ $return */
                 $return = $tags[0];
-                $this->addMultiline(':Type: '.self::typesToRst($return->getType()).' '.RstBuilder::escape($return->getDescription()),
-                    true);
+                $this->addMultiline(
+                    ':Type: '.self::typesToRst($return->getType()).' '.RstBuilder::escape($return->getDescription()),
+                    true
+                );
                 break;
             case 'throws':
                 /** @var Throws $tag */
                 foreach ($tags as $tag) {
-                    $this->addMultiline(':Throws: '.self::typesToRst($tag->getType()).' '.RstBuilder::escape($tag->getDescription()),
-                        true);
+                    $this->addMultiline(
+                        ':Throws: '.self::typesToRst($tag->getType()).' '.RstBuilder::escape($tag->getDescription()),
+                        true
+                    );
                 }
                 break;
             case 'since':
                 /** @var Since $return */
                 $return = $tags[0];
-                $this->addMultiline(':Since: '.$return->getVersion().' '.RstBuilder::escape($return->getDescription()),
-                    true);
+                $this->addMultiline(
+                    ':Since: '.$return->getVersion().' '.RstBuilder::escape($return->getDescription()),
+                    true
+                );
                 break;
             case 'deprecated':
                 /** @var Deprecated $return */
                 $return = $tags[0];
-                $this->addMultiline(':Deprecated: '.$return->getVersion().' '.RstBuilder::escape($return->getDescription()),
-                    true);
+                $this->addMultiline(
+                    ':Deprecated: '.$return->getVersion().' '.RstBuilder::escape($return->getDescription()),
+                    true
+                );
                 break;
             case 'see':
                 /** @var See $return */
                 $return = $tags[0];
-                $this->addMultiline(':See: '.self::typesToRst($return->getReference()).' '.RstBuilder::escape($return->getDescription()),
-                    true);
+                $this->addMultiline(
+                    ':See: '.self::typesToRst($return->getReference()).' '.RstBuilder::escape($return->getDescription()),
+                    true
+                );
                 break;
             case 'license':
                 /** @var DocBlock\Tags\BaseTag $return */
@@ -390,8 +402,10 @@ class PhpDomainBuilder extends RstBuilder
     public static function getLink($type, $fqsen, $description = '')
     {
         if ($description !== '') {
-            return ':php:'.$type.':`'.RstBuilder::escape($description).'<'.RstBuilder::escape(substr($fqsen,
-                    1)).'>`';
+            return ':php:'.$type.':`'.RstBuilder::escape($description).'<'.RstBuilder::escape(substr(
+                $fqsen,
+                1
+            )).'>`';
         }
 
         return ':php:'.$type.':`'.RstBuilder::escape(substr($fqsen, 1)).'`';
@@ -435,9 +449,9 @@ class PhpDomainBuilder extends RstBuilder
         if ($docBlock !== null) {
             /** @var Param $param */
             foreach ($docBlock->getTagsByName('param') as $param) {
-				if ($param instanceof Param) {
-					$params[$param->getVariableName()] = $param;
-				}
+                if ($param instanceof Param) {
+                    $params[$param->getVariableName()] = $param;
+                }
             }
             $deprecated = $docBlock->getTagsByName('deprecated');
         }
