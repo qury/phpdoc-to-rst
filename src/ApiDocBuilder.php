@@ -36,7 +36,7 @@ use phpDocumentor\Reflection\Php\Namespace_;
 use phpDocumentor\Reflection\Php\NodesFactory;
 use phpDocumentor\Reflection\Php\Project;
 use phpDocumentor\Reflection\Php\ProjectFactory;
-use phpDocumentor\Reflection\PrettyPrinter;
+use PhpParser\PrettyPrinter\Standard as PrettyPrinter;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
