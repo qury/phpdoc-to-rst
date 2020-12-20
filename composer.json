@@ -64,6 +64,7 @@
             "cd build && php -d phar.readonly=off phar-composer.phar build phpdoc-to-rst-master ../master.phar",
 
             "# END BUILD - ALL OK"
-        ]
+        ],
+		"test": "vendor\\bin\\phpunit"
     }
 }
