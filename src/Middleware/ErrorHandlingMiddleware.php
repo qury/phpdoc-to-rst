@@ -24,6 +24,7 @@ use Exception;
 use JuliusHaertl\PHPDocToRst\ApiDocBuilder;
 use phpDocumentor\Reflection\Middleware\Command;
 use phpDocumentor\Reflection\Middleware\Middleware;
+use phpDocumentor\Reflection\Php\File as FileElement;
 
 /**
  * Class ErrorHandlingMiddleware.
@@ -47,7 +48,7 @@ final class ErrorHandlingMiddleware implements Middleware
      *
      * @return object
      */
-    public function execute(Command $command, callable $next)
+    public function execute(Command $command, callable $next) : object
     {
         $filename = $command->getFile()->path();
         $this->apiDocBuilder->debug('Starting to parse file: '.$filename);
@@ -56,6 +57,13 @@ final class ErrorHandlingMiddleware implements Middleware
             return $next($command);
         } catch (Exception $e) {
             $this->apiDocBuilder->log('Unable to parse file "'.$filename.'", '.$e->getMessage());
+			//Must Return empty file object
+			return new FileElement(
+				$command->getFile()->md5(),
+				$filename
+			);
         }
+
+
     }
 }
