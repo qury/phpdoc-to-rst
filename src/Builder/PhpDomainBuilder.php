@@ -435,7 +435,9 @@ class PhpDomainBuilder extends RstBuilder
         if ($docBlock !== null) {
             /** @var Param $param */
             foreach ($docBlock->getTagsByName('param') as $param) {
-                $params[$param->getVariableName()] = $param;
+				if ($param instanceof Param) {
+					$params[$param->getVariableName()] = $param;
+				}
             }
             $deprecated = $docBlock->getTagsByName('deprecated');
         }
