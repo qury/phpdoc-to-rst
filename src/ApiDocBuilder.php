@@ -131,18 +131,20 @@ final class ApiDocBuilder
         }
 
         $projectFactory = new ProjectFactory([
-            new Factory\Argument(new PrettyPrinter()),
-            new Factory\Class_(),
-            new Factory\Constant(new PrettyPrinter()),
-            new Factory\DocBlock(DocBlockFactory::createInstance()),
-            new Factory\File(NodesFactory::createInstance(), [
-                    new ErrorHandlingMiddleware($this),
-                ]),
-            new Factory\Function_(),
-            new Factory\Interface_(),
-            new Factory\Method(),
-            new Factory\Property(new PrettyPrinter()),
-            new Factory\Trait_(),
+			new Factory\Argument(new PrettyPrinter()),
+			new Factory\Class_(),
+			new Factory\Define(new PrettyPrinter()),
+			new Factory\GlobalConstant(new PrettyPrinter()),
+			new Factory\ClassConstant(new PrettyPrinter()),
+			new Factory\DocBlock(DocBlockFactory::createInstance()),
+			new Factory\File(NodesFactory::createInstance(), [
+				new ErrorHandlingMiddleware($this),
+			]),
+			new Factory\Function_(),
+			new Factory\Interface_(),
+			new Factory\Method(),
+			new Factory\Property(new PrettyPrinter()),
+			new Factory\Trait_(),
         ]);
         $this->project = $projectFactory->create('MyProject', $interfaceList);
         $this->log('Successfully parsed files.');
