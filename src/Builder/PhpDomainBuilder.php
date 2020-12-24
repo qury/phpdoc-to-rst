@@ -347,12 +347,19 @@ class PhpDomainBuilder extends RstBuilder
      */
     protected function addProperties($properties)
     {
-        if (count($properties) > 0) {
+        //Choose display properties
+        $displayProperties = [];
+        foreach ($properties as $property) {
+            if ($this->shouldRenderElement($property)) {
+                $displayProperties[] = $property;
+            }
+        }
+
+        //Render
+        if (count($displayProperties) > 0) {
             $this->addH2('Properties');
-            foreach ($properties as $property) {
-                if ($this->shouldRenderElement($property)) {
-                    $this->addProperty($property);
-                }
+            foreach ($displayProperties as $property) {
+                $this->addProperty($property);
             }
         }
     }
