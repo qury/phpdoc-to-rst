@@ -50,6 +50,11 @@ class TocExtension extends Extension
                 if (count($interface->getMethods()) > 0) {
                     $builder->addH3('Methods');
                     foreach ($interface->getMethods() as $method) {
+                        //We don't want add an no displayed method to Summary
+                        if (!$builder->shouldRenderElement($method)) {
+                            continue;
+                        }
+
                         $args = '';
                         /** @var Argument $argument */
                         foreach ($method->getArguments() as $argument) {
