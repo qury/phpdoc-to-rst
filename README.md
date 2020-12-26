@@ -17,7 +17,7 @@ Now working as intended, with good coverage.
 This project is heavily based on [phpDocumentor/Reflection](https://github.com/phpDocumentor/Reflection)
 and makes use of [sphinxcontrib-phpdomain](https://github.com/markstory/sphinxcontrib-phpdomain).
 
-An example for the documentation output can be found in our [own documentation](http://phpdoc-to-rst.readthedocs.io/en/latest/api_docs.html)
+An example for the documentation output can be found in our [own documentation](https://phpdoc-to-rst.readthedocs.io/en/latest/)
 
 ## Quickstart
 
