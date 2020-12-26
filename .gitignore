@@ -6,3 +6,6 @@ composer.phar
 .DS_Store
 .php_cs.cache
 /build
+/tests/documentor-doc/
+/tests/psr-doc/
+/tests/self-doc/
