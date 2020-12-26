@@ -36,7 +36,7 @@ use phpDocumentor\Reflection\Php\Namespace_;
 use phpDocumentor\Reflection\Php\NodesFactory;
 use phpDocumentor\Reflection\Php\Project;
 use phpDocumentor\Reflection\Php\ProjectFactory;
-use phpDocumentor\Reflection\PrettyPrinter;
+use PhpParser\PrettyPrinter\Standard as PrettyPrinter;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
@@ -61,7 +61,7 @@ final class ApiDocBuilder
     private $functions = [];
 
     /** @var Extension[] */
-    private $extensions;
+    private $extensions = [];
 
     /** @var string[] */
     private $extensionNames = [];
@@ -133,11 +133,13 @@ final class ApiDocBuilder
         $projectFactory = new ProjectFactory([
             new Factory\Argument(new PrettyPrinter()),
             new Factory\Class_(),
-            new Factory\Constant(new PrettyPrinter()),
+            new Factory\Define(new PrettyPrinter()),
+            new Factory\GlobalConstant(new PrettyPrinter()),
+            new Factory\ClassConstant(new PrettyPrinter()),
             new Factory\DocBlock(DocBlockFactory::createInstance()),
             new Factory\File(NodesFactory::createInstance(), [
-                    new ErrorHandlingMiddleware($this),
-                ]),
+                new ErrorHandlingMiddleware($this),
+            ]),
             new Factory\Function_(),
             new Factory\Interface_(),
             new Factory\Method(),
@@ -349,7 +351,7 @@ final class ApiDocBuilder
     /**
      * @param \phpDocumentor\Reflection\Php\File $file
      */
-    private function parseFunctions(\phpDocumentor\Reflection\Php\File $file) :void
+    private function parseFunctions(\phpDocumentor\Reflection\Php\File $file): void
     {
         // build array of functions per namespace
         foreach ($file->getFunctions() as $function) {

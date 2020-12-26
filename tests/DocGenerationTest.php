@@ -9,7 +9,7 @@ use JuliusHaertl\PHPDocToRst\Extension\NoPrivateExtension;
 use JuliusHaertl\PHPDocToRst\Extension\PublicOnlyExtension;
 use JuliusHaertl\PHPDocToRst\Extension\TocExtension;
 
-class DocGenerationTest extends \PHPUnit_Framework_TestCase
+class DocGenerationTest extends \PHPUnit\Framework\TestCase
 {
     public function testBuildDocumentation()
     {
